@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['eztr_5fcustom_5fmsg_5fhandle_5fname_0',['EZTR_CUSTOM_MSG_HANDLE_NAME',['../eztr__api_8h.html#a29f8cdd082541b542b8a0c90f9e2cee0',1,'eztr_api.h']]],
-  ['eztr_5fdeclare_5fcustom_5fmsg_5fhandle_1',['EZTR_DECLARE_CUSTOM_MSG_HANDLE',['../eztr__api_8h.html#acdc0de54255e72ccfbb93bd54517254f',1,'eztr_api.h']]],
-  ['eztr_5fdefine_5fcustom_5fmsg_5fhandle_2',['EZTR_DEFINE_CUSTOM_MSG_HANDLE',['../eztr__api_8h.html#a112f8c80f439bbcb9c1fe6b04170fe00',1,'eztr_api.h']]],
-  ['eztr_5fdefine_5fcustom_5fmsg_5fhandle_5fno_5fexport_3',['EZTR_DEFINE_CUSTOM_MSG_HANDLE_NO_EXPORT',['../eztr__api_8h.html#a7dd4c9646967113b1f3215c33843a3d7',1,'eztr_api.h']]],
-  ['eztr_5fget_5fcustom_5fmsg_5fid_4',['EZTR_GET_CUSTOM_MSG_ID',['../eztr__api_8h.html#a14da8fca7f6659b1d98bcd6026498201',1,'eztr_api.h']]],
-  ['eztr_5fget_5fid_5',['EZTR_GET_ID',['../eztr__api_8h.html#a460cf0c3dd365f18ebb0b3e939b992db',1,'eztr_api.h']]],
-  ['eztr_5fhname_6',['EZTR_HNAME',['../eztr__api_8h.html#a488a0c39d416b763314c4b194807c5e5',1,'eztr_api.h']]],
-  ['eztr_5fimport_5fcustom_5fmsg_5fhandle_7',['EZTR_IMPORT_CUSTOM_MSG_HANDLE',['../eztr__api_8h.html#a726f3d2456c0acd0da0f73e9138de370',1,'eztr_api.h']]],
-  ['eztr_5fimport_5fcustom_5fmsg_5fhandle_5fno_5fprefix_8',['EZTR_IMPORT_CUSTOM_MSG_HANDLE_NO_PREFIX',['../eztr__api_8h.html#a9e093f08327ca500c2e45143d94d3565',1,'eztr_api.h']]],
-  ['eztr_5fmod_5fid_5fstr_9',['EZTR_MOD_ID_STR',['../eztr__api_8h.html#aee449f5b0e2f0d3889d8d60dec8f4a9b',1,'eztr_api.h']]],
-  ['eztr_5fmsg_5fbuffer_5fsize_10',['EZTR_MSG_BUFFER_SIZE',['../eztr__api_8h.html#ad12bec64c933d00f52577814e8b06caa',1,'eztr_api.h']]],
-  ['eztr_5fmsg_5fbuffer_5fwide_5fsize_11',['EZTR_MSG_BUFFER_WIDE_SIZE',['../eztr__api_8h.html#ad7f41684ba815f8a6662ef215789e253',1,'eztr_api.h']]],
-  ['eztr_5fmsg_5fcallback_12',['EZTR_MSG_CALLBACK',['../eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3',1,'eztr_api.h']]],
-  ['eztr_5fmsg_5fcontent_5fsize_13',['EZTR_MSG_CONTENT_SIZE',['../eztr__api_8h.html#ade961148a3cd71fa56275f0af9a45e26',1,'eztr_api.h']]],
-  ['eztr_5fmsg_5fheader_5fsize_14',['EZTR_MSG_HEADER_SIZE',['../eztr__api_8h.html#a06df59bd8ff9e8804cd1ca508dc80985',1,'eztr_api.h']]],
-  ['eztr_5fno_5fvalue_15',['EZTR_NO_VALUE',['../eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7',1,'eztr_api.h']]],
-  ['eztr_5fon_5finit_16',['EZTR_ON_INIT',['../eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5',1,'eztr_api.h']]]
+  ['eztr_5fmsg_5fcallback_0',['EZTR_MSG_CALLBACK',['../eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3',1,'eztr_api.h']]],
+  ['eztr_5fno_5fvalue_1',['EZTR_NO_VALUE',['../eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7',1,'eztr_api.h']]],
+  ['eztr_5fon_5finit_2',['EZTR_ON_INIT',['../eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5',1,'eztr_api.h']]]
 ];

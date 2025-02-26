@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['pipe_20escaped_20byte_20syntax_0',['Pipe-Escaped Byte Syntax',['../prinf_functions.html#autotoc_md4',1,'']]],
-  ['precision_1',['Supported Precision',['../prinf_functions.html#autotoc_md10',1,'']]],
-  ['printf_20functions_2',['EZTR Printf Functions',['../prinf_functions.html',1,'']]],
-  ['printf_20tt_3',['Differences from Standard &lt;tt&gt;[s[n]]printf&lt;/tt&gt;',['../prinf_functions.html#autotoc_md2',1,'']]]
+  ['m_20tt_20type_20specifier_0',['The &lt;tt&gt;%%m&lt;/tt&gt; Type Specifier',['../prinf_functions.html#m_type_specifier',1,'']]],
+  ['message_20buffer_1',['The Message Buffer',['../the_message_buffer.html',1,'']]],
+  ['messages_20and_20handles_2',['Custom Messages and Handles',['../custom_messages_and_handles.html',1,'']]],
+  ['msgbuffer_3',['MsgBuffer',['../group___msg_buffer.html',1,'']]],
+  ['msgscontent_4',['MsgSContent',['../group___msg_s_content.html',1,'']]]
 ];

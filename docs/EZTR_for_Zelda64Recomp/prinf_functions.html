@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EZ Text Replacer for Zelda64Recomp: EZTR Printf Functions</title>
+<title>EZ Text Replacer for Zelda64Recompiled: EZTR Printf Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recomp<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,27 +107,31 @@ $(function(){initNavTree('prinf_functions.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_docs_2_e_z_t_r_01_printf_01_functions"></a></p>
 <p>Because the message content are terminated.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md0"></a>
 Differences from Standard <code>[s[n]]printf</code></h1>
 <p>There are a few major differences to note between the standard <code>printf</code> functions and EZTR's implementations:</p>
 <ul>
-<li><code>\xBF</code> Termination <a class="el" href="prinf_functions.html">EZTR Printf Functions</a></li>
-<li>Pipe-Escaped Byte Syntax</li>
-<li>Display of Control Characters</li>
-<li>The <code>m</code> Type Specifier</li>
+<li><a class="el" href="#bf_termination"><code>\xBF</code> Termination</a></li>
+<li><a class="el" href="#pipe_escaped_bytes">Pipe-Escaped Byte Syntax</a></li>
+<li><a class="el" href="#m_type_specifier">The <code>%m</code> Type Specifier</a></li>
+<li><a class="el" href="#non_printable_bytes">Non-Printable Bytes</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<h2><a class="anchor" id="bf_termination"></a>
 <code>\xBF</code> Termination</h2>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<p>Because message strings use the <code>\0</code> null character as an indicator to</p>
+<p>See <a class="el" href="the_message_buffer.html">The Message Buffer</a> for more information.</p>
+<h2><a class="anchor" id="pipe_escaped_bytes"></a>
 Pipe-Escaped Byte Syntax</h2>
 <p>Lorem Ipsum</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
-The <code>m</code> Type Specifier</h2>
+<h2><a class="anchor" id="m_type_specifier"></a>
+The <code>%m</code> Type Specifier</h2>
 <p>Lorem Ipsum</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="non_printable_bytes"></a>
+Non-Printable Bytes</h2>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Format Specification</h1>
 <p>A format specifier follows this prototype: <code>%[flags][width][.precision][length]type</code> The following format specifiers are supported:</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 Supported Types</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -161,7 +165,7 @@ Supported Types</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">%   </td><td class="markdownTableBodyNone">A % followed by another % character will write a single %   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Supported Flags</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -177,7 +181,7 @@ Supported Flags</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Left-pads the number with zeros (0) instead of spaces when padding is specified (see width sub-specifier).   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Supported Width</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -187,7 +191,7 @@ Supported Width</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">*   </td><td class="markdownTableBodyNone">The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Supported Precision</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -197,7 +201,7 @@ Supported Precision</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">.*   </td><td class="markdownTableBodyNone">The precision is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Supported Length</h2>
 <p>The length sub-specifier modifies the length of the data type.</p>
 <table class="markdownTable">
@@ -220,12 +224,12 @@ Supported Length</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">t   </td><td class="markdownTableBodyNone">ptrdiff_t   </td><td class="markdownTableBodyNone">ptrdiff_t (if PRINTF_SUPPORT_PTRDIFF_T is defined)   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Return Value</h2>
 <p>Upon successful return, all functions return the number of characters written, <em>excluding</em> the terminating null character used to end the string. Functions <code>snprintf()</code> and <code>vsnprintf()</code> don't write more than <code>count</code> bytes, <em>including</em> the terminating null byte ('\xBF'). Anyway, if the output was truncated due to this limit, the return value is the number of characters that <em>could</em> have been written. Notice that a value equal or larger than <code>count</code> indicates a truncation. Only when the returned value is non-negative and less than <code>count</code>, the string has been completely written. If any error is encountered, <code>-1</code> is returned.</p>
 <p>If <code>buffer</code> is set to <code>NULL</code> (<code>nullptr</code>) nothing is written and just the formatted length is returned.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> length = sprintf(NULL, <span class="stringliteral">&quot;Hello, world&quot;</span>); <span class="comment">// length is set to 12</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 Credits</h1>
 <p>Special thanks to <a href="https://github.com/mpaland/">mpaland on GitHub</a> for creating this <a href="https://github.com/mpaland/printf">embedded printf library</a>, as EZTR's printf logic a modified version of this project. The documentation on this page is partially copied from there as well.</p>
 <p>(<a href="https://github.com/mpaland/printf">https://github.com/mpaland/printf</a>) </p>

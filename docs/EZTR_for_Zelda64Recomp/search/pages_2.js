@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['eztr_20basic_20api_0',['EZTR Basic API',['../md_docs_2_basic___a_p_i.html',1,'']]],
-  ['eztr_20printf_20functions_1',['EZTR Printf Functions',['../prinf_functions.html',1,'']]]
+  ['custom_20messages_20and_20handles_0',['Custom Messages and Handles',['../custom_messages_and_handles.html',1,'']]]
 ];

@@ -1,0 +1,28 @@
+var group___msg_buffer =
+[
+    [ "EZTR_MsgBuffer_ContentLen", "group___msg_buffer.html#ga4370a73be9636af6f60dfb954342cedc", null ],
+    [ "EZTR_MsgBuffer_Copy", "group___msg_buffer.html#ga020cddc8868430e6afd77733907d6139", null ],
+    [ "EZTR_MsgBuffer_Create", "group___msg_buffer.html#ga39c2beef126a75f0222b69759008120e", null ],
+    [ "EZTR_MsgBuffer_CreateFromStr", "group___msg_buffer.html#ga09fc35479c7e6fee9e6049f473363177", null ],
+    [ "EZTR_MsgBuffer_CreateFromStrN", "group___msg_buffer.html#ga91896add7333589c5d04730e84c8f6f4", null ],
+    [ "EZTR_MsgBuffer_Destroy", "group___msg_buffer.html#ga27b268a005666834e39511fd0dc2c469", null ],
+    [ "EZTR_MsgBuffer_GetContentPtr", "group___msg_buffer.html#ga21eec47bd44a5a81b37aa88561d17146", null ],
+    [ "EZTR_MsgBuffer_GetFirstItemRupees", "group___msg_buffer.html#gaecbd0e2114b2169dac0254e15bb920f4", null ],
+    [ "EZTR_MsgBuffer_GetNextMsg", "group___msg_buffer.html#ga015f838b68601c44d38be12780cb0834", null ],
+    [ "EZTR_MsgBuffer_GetSecondItemRupees", "group___msg_buffer.html#gaa2894fa932a1b5ab0429b26395eca921", null ],
+    [ "EZTR_MsgBuffer_GetTextBoxDisplayIcon", "group___msg_buffer.html#ga4bc50f85b99782d5aa97f8d122d1587d", null ],
+    [ "EZTR_MsgBuffer_GetTextBoxType", "group___msg_buffer.html#ga6fa740d70e876eb91c758c0686f06cb6", null ],
+    [ "EZTR_MsgBuffer_GetTextBoxYPos", "group___msg_buffer.html#gacb5e6b7691b750e998d5258cd180ef8e", null ],
+    [ "EZTR_MsgBuffer_Len", "group___msg_buffer.html#ga8b931bdaf93270ddc7ed445cf699b1fe", null ],
+    [ "EZTR_MsgBuffer_NCopy", "group___msg_buffer.html#gaa46abdcae0cc0572a9b3d6474f01bc62", null ],
+    [ "EZTR_MsgBuffer_Print", "group___msg_buffer.html#gaf8d9e959cd5fa20e5bdadb8cce347c22", null ],
+    [ "EZTR_MsgBuffer_PrintFull", "group___msg_buffer.html#ga59379a5596f63ec6c0bcd7eb4fb7fd14", null ],
+    [ "EZTR_MsgBuffer_SetFirstItemRupees", "group___msg_buffer.html#ga89663200d1aa9ffe42c27039bb2701d4", null ],
+    [ "EZTR_MsgBuffer_SetNextMsg", "group___msg_buffer.html#ga46f857fd4054f0b076012a85b8b14f08", null ],
+    [ "EZTR_MsgBuffer_SetSecondItemRupees", "group___msg_buffer.html#ga873aabed87f63550b8818174e16f7f63", null ],
+    [ "EZTR_MsgBuffer_SetTextBoxDisplayIcon", "group___msg_buffer.html#gacf6d8ba4bde04faab7330540c4d284cd", null ],
+    [ "EZTR_MsgBuffer_SetTextBoxType", "group___msg_buffer.html#ga530d275045043f28d94b762b36daf66e", null ],
+    [ "EZTR_MsgBuffer_SetTextBoxYPos", "group___msg_buffer.html#gabaf1d5e1b0fc9637427f0c758bff0da9", null ],
+    [ "EZTR_MsgBuffer_WriteDefaultHeader", "group___msg_buffer.html#gad149fb2e9d2c8fa3e0034ac54a61a678", null ],
+    [ "EZTR_MsgBuffer_WriteHeader", "group___msg_buffer.html#ga578d94107d666a42c08bb3ad73fd8f33", null ]
+];

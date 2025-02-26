@@ -24,26 +24,27 @@
 */
 var NAVTREE =
 [
-  [ "EZ Text Replacer for Zelda64Recomp", "index.html", [
-    [ "EZTR Basic API", "md_docs_2_basic___a_p_i.html", [
-      [ "EZTR_ON_INIT and RECOMP_CALLBACK(\"MM_EZ_Text_Replacer_API\", EZTR_OnInit)", "md_docs_2_basic___a_p_i.html#autotoc_md1", null ]
-    ] ],
+  [ "EZ Text Replacer for Zelda64Recompiled", "index.html", [
+    [ "Custom Messages and Handles", "custom_messages_and_handles.html", null ],
     [ "EZTR Printf Functions", "prinf_functions.html", [
-      [ "Differences from Standard [s[n]]printf", "prinf_functions.html#autotoc_md2", [
-        [ "\\xBF Termination", "prinf_functions.html#autotoc_md3", null ],
-        [ "Pipe-Escaped Byte Syntax", "prinf_functions.html#autotoc_md4", null ],
-        [ "The m Type Specifier", "prinf_functions.html#autotoc_md5", null ]
+      [ "Differences from Standard [s[n]]printf", "prinf_functions.html#autotoc_md0", [
+        [ "\\xBF Termination", "prinf_functions.html#bf_termination", null ],
+        [ "Pipe-Escaped Byte Syntax", "prinf_functions.html#pipe_escaped_bytes", null ],
+        [ "The %m Type Specifier", "prinf_functions.html#m_type_specifier", null ],
+        [ "Non-Printable Bytes", "prinf_functions.html#non_printable_bytes", null ]
       ] ],
-      [ "Format Specification", "prinf_functions.html#autotoc_md6", [
-        [ "Supported Types", "prinf_functions.html#autotoc_md7", null ],
-        [ "Supported Flags", "prinf_functions.html#autotoc_md8", null ],
-        [ "Supported Width", "prinf_functions.html#autotoc_md9", null ],
-        [ "Supported Precision", "prinf_functions.html#autotoc_md10", null ],
-        [ "Supported Length", "prinf_functions.html#autotoc_md11", null ],
-        [ "Return Value", "prinf_functions.html#autotoc_md12", null ]
+      [ "Format Specification", "prinf_functions.html#autotoc_md1", [
+        [ "Supported Types", "prinf_functions.html#autotoc_md2", null ],
+        [ "Supported Flags", "prinf_functions.html#autotoc_md3", null ],
+        [ "Supported Width", "prinf_functions.html#autotoc_md4", null ],
+        [ "Supported Precision", "prinf_functions.html#autotoc_md5", null ],
+        [ "Supported Length", "prinf_functions.html#autotoc_md6", null ],
+        [ "Return Value", "prinf_functions.html#autotoc_md7", null ]
       ] ],
-      [ "Credits", "prinf_functions.html#autotoc_md13", null ]
+      [ "Credits", "prinf_functions.html#autotoc_md8", null ]
     ] ],
+    [ "The Message Buffer", "the_message_buffer.html", null ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ]
@@ -63,8 +64,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"eztr__api_8h.html#a716ef28fc50ca98601dddf9fb05240cbadbf158c9b0d6869a7623828f7347491b"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
