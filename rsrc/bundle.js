@@ -27931,10 +27931,87 @@ return jQuery;
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],3:[function(require,module,exports){
 "use strict";
-require("jquery");
+let utils = require("./utils");
+// Handle Window Exports:
+utils.expose_on_window("$", require("jquery"));
 let _ = require("lodash");
+utils.expose_on_window("_", _);
+let tt = require("./terminal_typeout");
+utils.expose_on_window("set_terminal_typeout", tt.set_terminal_typeout);
 $(() => {
     console.log("Hello Alex");
 });
 
-},{"jquery":1,"lodash":2}]},{},[3]);
+},{"./terminal_typeout":4,"./utils":5,"jquery":1,"lodash":2}],4:[function(require,module,exports){
+"use strict";
+require("jquery");
+class TerminalTypeoutController {
+    constructor(p_typeout_elem, p_typing_interval = 100, p_on_complete = null) {
+        this.add_pos = 0;
+        this.elem = p_typeout_elem;
+        this.text = this.elem.innerText;
+        this.typing_interval = p_typing_interval;
+        this.on_complete = p_on_complete;
+        console.log(this.text);
+        this.elem.innerText = "";
+        setTimeout(() => { this.update(); }, this.typing_interval);
+    }
+    update() {
+        if (this.add_pos === this.text.length) {
+            this.elem.innerHTML = this.text;
+            if (this.on_complete !== null) {
+                this.on_complete();
+            }
+        }
+        else {
+            this.elem.innerText += this.text.charAt(this.add_pos);
+            this.add_pos++;
+            setTimeout(() => { this.update(); }, this.typing_interval);
+        }
+    }
+}
+class BlinkController {
+    constructor(p_elem, p_interval = 1000, start_now = true) {
+        this.is_visible = true;
+        this.elem = p_elem;
+        this.text = this.elem.innerText;
+        this.interval = p_interval;
+        if (start_now) {
+            this.update();
+        }
+    }
+    update() {
+        if (this.is_visible) {
+            this.elem.innerHTML = this.text;
+        }
+        else {
+            this.elem.innerHTML = "";
+        }
+        this.is_visible = !this.is_visible;
+        setTimeout(() => { this.update(); }, this.interval);
+    }
+}
+var term_type_controllers = [];
+$(() => {
+    let tt_items = $(".terminal-typeout");
+    for (let i = 0; i < tt_items.length; i++) {
+        let item = tt_items.get(i);
+        term_type_controllers.push(new TerminalTypeoutController(item));
+    }
+    // Handling header:
+    let header_typeout = $("#header-typeout");
+    let header_blink = $("#header-blink");
+    let header_blink_controller = new BlinkController(header_blink.get(0), 700, false);
+    term_type_controllers.push(new TerminalTypeoutController(header_typeout.get(0), 100, () => { header_blink_controller.update(); }));
+});
+
+},{"jquery":1}],5:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.expose_on_window = expose_on_window;
+function expose_on_window(name, item) {
+    let w_any = window;
+    w_any[name] = item;
+}
+
+},{}]},{},[3]);
