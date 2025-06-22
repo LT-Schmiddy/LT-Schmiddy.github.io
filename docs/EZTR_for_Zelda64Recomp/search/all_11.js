@@ -1,4 +1,28 @@
 var searchData=
 [
-  ['xbf_20tt_20termination_0',['&lt;tt&gt;\\xBF&lt;/tt&gt; Termination',['../prinf_functions.html#bf_termination',1,'']]]
+  ['termination_0',['&lt;tt&gt;\\xBF&lt;/tt&gt; Termination',['../prinf_functions.html#bf_termination',1,'']]],
+  ['text_20in_20majora_20s_20mask_1',['Text in Majora&apos;s Mask',['../the_message_buffer.html#autotoc_md22',1,'']]],
+  ['text_20replacer_20for_20zelda64recompiled_2',['EZ Text Replacer for Zelda64Recompiled',['../index.html',1,'']]],
+  ['the_20handle_20prefix_3',['Disabling the Handle Prefix',['../custom_messages_and_handles.html#autotoc_md6',1,'']]],
+  ['the_20independent_20message_20buffer_4',['The Independent Message Buffer',['../the_message_buffer.html#autotoc_md25',1,'']]],
+  ['the_20message_20buffer_5',['The Message Buffer',['../the_message_buffer.html',1,'']]],
+  ['the_20message_20buffer_6',['Working with the Message Buffer',['../the_message_buffer.html#autotoc_md24',1,'']]],
+  ['the_20message_20buffer_20and_20callbacks_7',['The Message Buffer and Callbacks',['../the_message_buffer.html#message_buffer_and_callbacks',1,'']]],
+  ['the_20tt_20m_20tt_20and_20tt_20m_20tt_20type_20specifiers_8',['The &lt;tt&gt;%%m&lt;/tt&gt; and &lt;tt&gt;%%M&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'']]],
+  ['the_20tt_20q_20tt_20type_20specifiers_9',['The &lt;tt&gt;%%q&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#q_type_specifiers',1,'']]],
+  ['the_20tt_20w_20tt_20type_20specifiers_10',['The &lt;tt&gt;%%w&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#w_type_specifiers',1,'']]],
+  ['to_20declare_20a_20custom_20message_11',['How To Declare a Custom Message',['../custom_messages_and_handles.html#autotoc_md1',1,'']]],
+  ['to_20work_20with_20message_20buffer_12',['When to Work with Message Buffer',['../the_message_buffer.html#autotoc_md23',1,'']]],
+  ['tt_13',['Differences from Standard &lt;tt&gt;[s[n]]printf&lt;/tt&gt;',['../prinf_functions.html#autotoc_md10',1,'']]],
+  ['tt_20and_20tt_20m_20tt_20type_20specifiers_14',['The &lt;tt&gt;%%m&lt;/tt&gt; and &lt;tt&gt;%%M&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'']]],
+  ['tt_20m_20tt_20and_20tt_20m_20tt_20type_20specifiers_15',['The &lt;tt&gt;%%m&lt;/tt&gt; and &lt;tt&gt;%%M&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'']]],
+  ['tt_20m_20tt_20type_20specifiers_16',['The &lt;tt&gt;%%m&lt;/tt&gt; and &lt;tt&gt;%%M&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'']]],
+  ['tt_20q_20tt_20type_20specifiers_17',['The &lt;tt&gt;%%q&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#q_type_specifiers',1,'']]],
+  ['tt_20s_20n_20printf_20tt_18',['Differences from Standard &lt;tt&gt;[s[n]]printf&lt;/tt&gt;',['../prinf_functions.html#autotoc_md10',1,'']]],
+  ['tt_20termination_19',['&lt;tt&gt;\\xBF&lt;/tt&gt; Termination',['../prinf_functions.html#bf_termination',1,'']]],
+  ['tt_20type_20specifiers_20',['tt Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'The &lt;tt&gt;%m&lt;/tt&gt; and &lt;tt&gt;%M&lt;/tt&gt; Type Specifiers'],['../prinf_functions.html#q_type_specifiers',1,'The &lt;tt&gt;%q&lt;/tt&gt; Type Specifiers'],['../prinf_functions.html#w_type_specifiers',1,'The &lt;tt&gt;%w&lt;/tt&gt; Type Specifiers']]],
+  ['tt_20w_20tt_20type_20specifiers_21',['The &lt;tt&gt;%%w&lt;/tt&gt; Type Specifiers',['../prinf_functions.html#w_type_specifiers',1,'']]],
+  ['tt_20xbf_20tt_20termination_22',['&lt;tt&gt;\\xBF&lt;/tt&gt; Termination',['../prinf_functions.html#bf_termination',1,'']]],
+  ['type_20specifiers_23',['Type Specifiers',['../prinf_functions.html#m_type_specifier',1,'The &lt;tt&gt;%m&lt;/tt&gt; and &lt;tt&gt;%M&lt;/tt&gt; Type Specifiers'],['../prinf_functions.html#q_type_specifiers',1,'The &lt;tt&gt;%q&lt;/tt&gt; Type Specifiers'],['../prinf_functions.html#w_type_specifiers',1,'The &lt;tt&gt;%w&lt;/tt&gt; Type Specifiers']]],
+  ['types_24',['Types',['../prinf_functions.html#autotoc_md12',1,'Supported Types'],['../group___types.html',1,'Types']]]
 ];

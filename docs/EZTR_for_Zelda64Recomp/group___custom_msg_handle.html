@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,6 +107,9 @@ $(function(){initNavTree('group___custom_msg_handle.html',''); initResizable(tru
   <div class="headertitle"><div class="title">CustomMsgHandle</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Macros and types used for working with the handles for custom messages.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
@@ -122,6 +125,9 @@ Macros</h2></td></tr>
 <tr class="memitem:gacdc0de54255e72ccfbb93bd54517254f" id="r_gacdc0de54255e72ccfbb93bd54517254f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gacdc0de54255e72ccfbb93bd54517254f">EZTR_DECLARE_CUSTOM_MSG_HANDLE</a>(name)</td></tr>
 <tr class="memdesc:gacdc0de54255e72ccfbb93bd54517254f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a declaration for a CustomMsgHandle object.  <br /></td></tr>
 <tr class="separator:gacdc0de54255e72ccfbb93bd54517254f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0be8e08583bb0d5755f5fc3d1660e204" id="r_ga0be8e08583bb0d5755f5fc3d1660e204"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0be8e08583bb0d5755f5fc3d1660e204">EZTR_EXTERN_CUSTOM_MSG_HANDLE</a>(name)</td></tr>
+<tr class="memdesc:ga0be8e08583bb0d5755f5fc3d1660e204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a declaration for a CustomMsgHandle object. Alternative to <code>EZTR_DECLARE_CUSTOM_MSG_HANDLE</code>.  <br /></td></tr>
+<tr class="separator:ga0be8e08583bb0d5755f5fc3d1660e204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga726f3d2456c0acd0da0f73e9138de370" id="r_ga726f3d2456c0acd0da0f73e9138de370"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga726f3d2456c0acd0da0f73e9138de370">EZTR_IMPORT_CUSTOM_MSG_HANDLE</a>(mod_str,  name_suffix)</td></tr>
 <tr class="memdesc:ga726f3d2456c0acd0da0f73e9138de370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declares and imports a CustomMsgHandle object from another mod.  <br /></td></tr>
 <tr class="separator:ga726f3d2456c0acd0da0f73e9138de370"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,8 +143,12 @@ Macros</h2></td></tr>
 <tr class="memitem:ga460cf0c3dd365f18ebb0b3e939b992db" id="r_ga460cf0c3dd365f18ebb0b3e939b992db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga460cf0c3dd365f18ebb0b3e939b992db">EZTR_GET_ID</a>(handle)</td></tr>
 <tr class="memdesc:ga460cf0c3dd365f18ebb0b3e939b992db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the textId from a custom message handle.  <br /></td></tr>
 <tr class="separator:ga460cf0c3dd365f18ebb0b3e939b992db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d2bf9e6ca393d8ec562a21d177002e3" id="r_ga4d2bf9e6ca393d8ec562a21d177002e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4d2bf9e6ca393d8ec562a21d177002e3">EZTR_GET_ID_H</a>(handle)</td></tr>
+<tr class="memdesc:ga4d2bf9e6ca393d8ec562a21d177002e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the textId from a custom message handle.  <br /></td></tr>
+<tr class="separator:ga4d2bf9e6ca393d8ec562a21d177002e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Macros and types used for working with the handles for custom messages. </p>
 <p>This page contains all of the information in custom message handles an how to use them.</p>
 <p>It's worth noting that a custom message handle is actually a function, defined through macros. In brief, here are the important things to know:</p><ul>
 <li>The handler's only argument is a pointer that EZTR uses internally. Modders don't need to use it.</li>
@@ -186,7 +196,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">u16 <a class="code hl_define" href="#ga29f8cdd082541b542b8a0c90f9e2cee0">EZTR_CUSTOM_MSG_HANDLE_NAME</a>(name)(_EZTR_CustomMsgHandleSetter* setter)</div>
-<div class="ttc" id="agroup___custom_msg_handle_html_ga29f8cdd082541b542b8a0c90f9e2cee0"><div class="ttname"><a href="#ga29f8cdd082541b542b8a0c90f9e2cee0">EZTR_CUSTOM_MSG_HANDLE_NAME</a></div><div class="ttdeci">#define EZTR_CUSTOM_MSG_HANDLE_NAME(name_suffix)</div><div class="ttdoc">Uses to set/get the actual symbol name for custom message handles If you want to add a prefix/suffix ...</div><div class="ttdef"><b>Definition</b> eztr_api.h:121</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga29f8cdd082541b542b8a0c90f9e2cee0"><div class="ttname"><a href="#ga29f8cdd082541b542b8a0c90f9e2cee0">EZTR_CUSTOM_MSG_HANDLE_NAME</a></div><div class="ttdeci">#define EZTR_CUSTOM_MSG_HANDLE_NAME(name_suffix)</div><div class="ttdoc">Uses to set/get the actual symbol name for custom message handles If you want to add a prefix/suffix ...</div><div class="ttdef"><b>Definition</b> eztr_api.h:127</div></div>
 </div><!-- fragment -->
 <p>Creates a declaration for a CustomMsgHandle object. </p>
 <p>Use this reference handles created in other .c files. Also works in headers. </p>
@@ -239,6 +249,28 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a id="ga0be8e08583bb0d5755f5fc3d1660e204" name="ga0be8e08583bb0d5755f5fc3d1660e204"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0be8e08583bb0d5755f5fc3d1660e204">&#9670;&#160;</a></span>EZTR_EXTERN_CUSTOM_MSG_HANDLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EZTR_EXTERN_CUSTOM_MSG_HANDLE</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#gacdc0de54255e72ccfbb93bd54517254f">EZTR_DECLARE_CUSTOM_MSG_HANDLE</a>(name)</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_gacdc0de54255e72ccfbb93bd54517254f"><div class="ttname"><a href="#gacdc0de54255e72ccfbb93bd54517254f">EZTR_DECLARE_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_DECLARE_CUSTOM_MSG_HANDLE(name)</div><div class="ttdoc">Creates a declaration for a CustomMsgHandle object.</div><div class="ttdef"><b>Definition</b> eztr_api.h:160</div></div>
+</div><!-- fragment -->
+<p>Creates a declaration for a CustomMsgHandle object. Alternative to <code>EZTR_DECLARE_CUSTOM_MSG_HANDLE</code>. </p>
+<p>Use this reference handles created in other .c files. Also works in headers. </p>
+
+</div>
+</div>
 <a id="ga14da8fca7f6659b1d98bcd6026498201" name="ga14da8fca7f6659b1d98bcd6026498201"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga14da8fca7f6659b1d98bcd6026498201">&#9670;&#160;</a></span>EZTR_GET_CUSTOM_MSG_ID</h2>
 
@@ -275,11 +307,33 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ga14da8fca7f6659b1d98bcd6026498201">EZTR_GET_CUSTOM_MSG_ID</a>(handle)</div>
-<div class="ttc" id="agroup___custom_msg_handle_html_ga14da8fca7f6659b1d98bcd6026498201"><div class="ttname"><a href="#ga14da8fca7f6659b1d98bcd6026498201">EZTR_GET_CUSTOM_MSG_ID</a></div><div class="ttdeci">#define EZTR_GET_CUSTOM_MSG_ID(handle)</div><div class="ttdoc">Gets the textId from a custom message handle.</div><div class="ttdef"><b>Definition</b> eztr_api.h:176</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga14da8fca7f6659b1d98bcd6026498201"><div class="ttname"><a href="#ga14da8fca7f6659b1d98bcd6026498201">EZTR_GET_CUSTOM_MSG_ID</a></div><div class="ttdeci">#define EZTR_GET_CUSTOM_MSG_ID(handle)</div><div class="ttdoc">Gets the textId from a custom message handle.</div><div class="ttdef"><b>Definition</b> eztr_api.h:191</div></div>
 </div><!-- fragment -->
 <p>Gets the textId from a custom message handle. </p>
 <p>A more readable alternative to <code>handle(NULL)</code>, and shorthand for <code><a class="el" href="#ga14da8fca7f6659b1d98bcd6026498201" title="Gets the textId from a custom message handle.">EZTR_GET_CUSTOM_MSG_ID()</a></code></p>
 <p>Note that this macro won't apply the global prefix if it's enabled. You'll need to use something like <code><a class="el" href="#ga14da8fca7f6659b1d98bcd6026498201" title="Gets the textId from a custom message handle.">EZTR_GET_CUSTOM_MSG_ID(EZTR_HNAME(my_handle))</a></code> or <code><a class="el" href="#ga460cf0c3dd365f18ebb0b3e939b992db" title="Gets the textId from a custom message handle.">EZTR_GET_ID(EZTR_HNAME(my_handle))</a></code>. </p>
+
+</div>
+</div>
+<a id="ga4d2bf9e6ca393d8ec562a21d177002e3" name="ga4d2bf9e6ca393d8ec562a21d177002e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d2bf9e6ca393d8ec562a21d177002e3">&#9670;&#160;</a></span>EZTR_GET_ID_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EZTR_GET_ID_H</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>handle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ga14da8fca7f6659b1d98bcd6026498201">EZTR_GET_CUSTOM_MSG_ID</a>(<a class="code hl_define" href="#ga29f8cdd082541b542b8a0c90f9e2cee0">EZTR_CUSTOM_MSG_HANDLE_NAME</a>(handle))</div>
+</div><!-- fragment -->
+<p>Gets the textId from a custom message handle. </p>
+<p>A more readable alternative to <code>EZTR_CustomMsgHandle_##handle(NULL)</code>.</p>
+<p>This macro WILL apply the global prefix if it's enabled, and can be considered shorthand for <code><a class="el" href="#ga14da8fca7f6659b1d98bcd6026498201" title="Gets the textId from a custom message handle.">EZTR_GET_CUSTOM_MSG_ID(EZTR_HNAME(my_handle))</a></code> or <code><a class="el" href="#ga460cf0c3dd365f18ebb0b3e939b992db" title="Gets the textId from a custom message handle.">EZTR_GET_ID(EZTR_HNAME(my_handle))</a></code>. </p>
 
 </div>
 </div>

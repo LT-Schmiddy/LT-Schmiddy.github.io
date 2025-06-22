@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,7 +106,121 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="mainpage"></a></p>
-<p>Welcome! </p>
+<p>EZTR is a complete in-game text, message, and dialog suite for Zelda64Recompiled modding. With it, you can:</p>
+<ul>
+<li>Replace any vanilla game dialog, item description, or other on-screen message.</li>
+<li>Add your own brand-new message entries for custom NPCs.</li>
+<li>Dynamically generate message content at runtime, using callbacks.</li>
+</ul>
+<p>And more!</p>
+<h1><a class="anchor" id="autotoc_md19"></a>
+Basic Replacements</h1>
+<p>Replacing dialog is straightforward.</p>
+<p>In your mod code, create a function with the following signature:</p>
+<div class="fragment"><div class="line"><span class="comment">// This function can be named whatever you want.</span></div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a> <span class="keywordtype">void</span> my_initialization_function() { ... }</div>
+<div class="ttc" id="aeztr__api_8h_html_a716f6a6679ad9e38a4f93a18ad54ece5"><div class="ttname"><a href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a></div><div class="ttdeci">#define EZTR_ON_INIT</div><div class="ttdoc">Used to declare a function that should run after EZTR has finished initializing.</div><div class="ttdef"><b>Definition</b> eztr_api.h:258</div></div>
+</div><!-- fragment --><p>Inside this function, you will define each text replacement you want to make using EZTR's <a class="el" href="group___basic___replacement.html">Basic_Replacement</a> API. For example:</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="eztr__api_8h.html">eztr_api.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a> <span class="keywordtype">void</span> init_text() {</div>
+<div class="line">    <a class="code hl_function" href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a>(</div>
+<div class="line">        0x061B,</div>
+<div class="line">        EZTR_STANDARD_TEXT_BOX_I,</div>
+<div class="line">        0,</div>
+<div class="line">        EZTR_ICON_NO_ICON,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <span class="keyword">false</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Hey, apprentice! Don&#39;t just stand&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;around lookin&#39; at the sky all&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;day!&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga71448d77b24075c4fe8fa4ce2e27c98b">EZTR_CC_EVENT2</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>,</div>
+<div class="line">        NULL</div>
+<div class="line">    );</div>
+<div class="line">}</div>
+<div class="ttc" id="aeztr__api_8h_html"><div class="ttname"><a href="eztr__api_8h.html">eztr_api.h</a></div><div class="ttdoc">The main header for EZTR.</div></div>
+<div class="ttc" id="aeztr__api_8h_html_a809bff127d072380b5fc99b3721051c7"><div class="ttname"><a href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a></div><div class="ttdeci">#define EZTR_NO_VALUE</div><div class="ttdoc">Used by certain members of EZTR_MsgData (and the message header generally) to indicate that said memb...</div><div class="ttdef"><b>Definition</b> eztr_api.h:304</div></div>
+<div class="ttc" id="agroup___basic___replacement_html_ga98916bb31605dee625a2774ed476deaf"><div class="ttname"><a href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a></div><div class="ttdeci">void EZTR_Basic_ReplaceText(u16 textId, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, EZTR_MsgCallback callback,...)</div><div class="ttdoc">Declare a replacement of a vanilla message by defining the header attributes and message content.</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga71448d77b24075c4fe8fa4ce2e27c98b"><div class="ttname"><a href="group___control___code___macros.html#ga71448d77b24075c4fe8fa4ce2e27c98b">EZTR_CC_EVENT2</a></div><div class="ttdeci">#define EZTR_CC_EVENT2</div><div class="ttdoc">End Conversation.</div><div class="ttdef"><b>Definition</b> eztr_api.h:1209</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga7588b075b66c154a715dbfa07d4236ec"><div class="ttname"><a href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a></div><div class="ttdeci">#define EZTR_CC_NEWLINE</div><div class="ttdoc">Line Break.</div><div class="ttdef"><b>Definition</b> eztr_api.h:797</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga856cd8dd5a8d7cd6372e9d49683cf8ea"><div class="ttname"><a href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a></div><div class="ttdeci">#define EZTR_CC_END</div><div class="ttdoc">Message End Marker.</div><div class="ttdef"><b>Definition</b> eztr_api.h:1034</div></div>
+</div><!-- fragment --><p>Messages can also be dynamically generated at runtime based on code. For example:</p>
+<div class="fragment"><div class="line"><span class="comment">// Callback used to set Bomb Shop owner dialog.</span></div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3">EZTR_MSG_CALLBACK</a>(bombshop_nonhuman_callback) {</div>
+<div class="line">    Player* player = GET_PLAYER(play);</div>
+<div class="line">    <span class="keywordflow">if</span> (player-&gt;transformation != PLAYER_FORM_DEKU) {</div>
+<div class="line">        buf-&gt;data.text_box_type = EZTR_STANDARD_TEXT_BOX_II;</div>
+<div class="line">        <a class="code hl_function" href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a>(buf-&gt;data.content, <span class="stringliteral">&quot;...Welcome.&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>);</div>
+<div class="line">    } <span class="keywordflow">else</span> {</div>
+<div class="line">        <span class="comment">// Vanilla Dialogue:</span></div>
+<div class="line">        <a class="code hl_function" href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a>(buf-&gt;data.content, <span class="stringliteral">&quot;You can&#39;t use any of them, but&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;feel free to look around.&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a> <span class="keywordtype">void</span> init_text() {</div>
+<div class="line">    <span class="comment">// Replacements for Bomb Shop</span></div>
+<div class="line">    <a class="code hl_function" href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a>(</div>
+<div class="line">        0x064B,</div>
+<div class="line">        EZTR_STANDARD_TEXT_BOX_I,</div>
+<div class="line">        0,</div>
+<div class="line">        EZTR_ICON_NO_ICON,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <span class="keyword">false</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;\xBF&quot;</span>,</div>
+<div class="line">        bombshop_nonhuman_callback</div>
+<div class="line">    );</div>
+<div class="line">}</div>
+<div class="ttc" id="aeztr__api_8h_html_a04bd5b4fa086a6baf377da8e21b478b3"><div class="ttname"><a href="eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3">EZTR_MSG_CALLBACK</a></div><div class="ttdeci">#define EZTR_MSG_CALLBACK(fname)</div><div class="ttdoc">A macro to easily create message callback functions.</div><div class="ttdef"><b>Definition</b> eztr_api.h:243</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga7ce0360d53e073c4bbb551f29fae27b4"><div class="ttname"><a href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a></div><div class="ttdeci">#define EZTR_CC_EVENT</div><div class="ttdoc">Disable Text Skip II.</div><div class="ttdef"><b>Definition</b> eztr_api.h:862</div></div>
+<div class="ttc" id="agroup___msg_s_content_html_gaf9672989bc812f2b03a238fe422e2f19"><div class="ttname"><a href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a></div><div class="ttdeci">int EZTR_MsgSContent_Sprintf(char *buffer, const char *format,...)</div><div class="ttdoc">A modified version of printf, specially designed to handle message content. This version uses pipe-es...</div></div>
+</div><!-- fragment --><p>See <a class="el" href="the_message_buffer.html#message_buffer_and_callbacks">Message Buffers and Callbacks</a> to learn more.</p>
+<p>You can add custom messages through a similar process. For example:</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga112f8c80f439bbcb9c1fe6b04170fe00">EZTR_DEFINE_CUSTOM_MSG_HANDLE</a>(my_custom_message_handle);</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a> <span class="keywordtype">void</span> init_text() {</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa">EZTR_Basic_AddCustomText</a>(</div>
+<div class="line">        <a class="code hl_define" href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5">EZTR_HNAME</a>(external_custom_message_handle),</div>
+<div class="line">        EZTR_STANDARD_TEXT_BOX_I, </div>
+<div class="line">        0, </div>
+<div class="line">        EZTR_ICON_NO_ICON, </div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, </div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, </div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, </div>
+<div class="line">        <span class="keyword">false</span>, </div>
+<div class="line">        <span class="stringliteral">&quot;HELLO WORLD AGAIN!!\xBF&quot;</span>, </div>
+<div class="line">        NULL</div>
+<div class="line">    );</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup___basic___custom_messages_html_gace188a3f79116cc538daa69b2b60ebaa"><div class="ttname"><a href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa">EZTR_Basic_AddCustomText</a></div><div class="ttdeci">void EZTR_Basic_AddCustomText(EZTR_CustomMsgHandle handle, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, EZTR_MsgCallback callback,...)</div><div class="ttdoc">Declare a brand new (i.e: custom) message by defining the header attributes and message content.</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga112f8c80f439bbcb9c1fe6b04170fe00"><div class="ttname"><a href="group___custom_msg_handle.html#ga112f8c80f439bbcb9c1fe6b04170fe00">EZTR_DEFINE_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_DEFINE_CUSTOM_MSG_HANDLE(name)</div><div class="ttdoc">Creates a CustomMsgHandle object.</div><div class="ttdef"><b>Definition</b> eztr_api.h:150</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga488a0c39d416b763314c4b194807c5e5"><div class="ttname"><a href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5">EZTR_HNAME</a></div><div class="ttdeci">#define EZTR_HNAME(name_suffix)</div><div class="ttdoc">Shorthand for EZTR_CUSTOM_MSG_HANDLE_NAME()</div><div class="ttdef"><b>Definition</b> eztr_api.h:200</div></div>
+</div><!-- fragment --><p>Check out the <a class="el" href="custom_messages_and_handles.html">Custom Messages and Handles</a> page to learn more.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
+Dumping Messages</h1>
+<p>To easily access the raw message data needed for replacements, go to EZTR's configuration page and enable <code>Text Dumping</code>.</p>
+<p><img src="./eztr_config_page.png" alt="./eztr_config_page.png" class="inline"/></p>
+<p>When enabled, EZTR prints message data to the Zelda64Recompiled console whenever a message is loaded/displayed. There are also a couple of formatting options provided:</p>
+<ul>
+<li><code>Dump Text as C Code</code> - When enabled, text dumps will be formatted as calls to EZTR’s text-replacement API.</li>
+<li><code>Text Dumping Byte Format</code> - How non-printable bytes are dumped, with <code>_</code> representing hexadecimal digits. See the section on <a class="el" href="prinf_functions.html#pipe_escaped_bytes">pipe-escaped bytes</a> for information on the <code>Pipes</code> option.</li>
+<li>Print the EZTR control code macro from <a class="el" href="group___control___code___macros.html">Control_Code_Macros</a> (when available) when dumping a non-printable byte.</li>
+</ul>
+<p>Additionally, you may want to check out the <a href="https://thunderstore.io/c/zelda-64-recompiled/p/LT_Schmiddy/EZTR_Dump_To_Disk_Extention/">EZTR Dump To Disk Extension</a>, which can generate a preformatted C file with all the messages you've dumped.</p>
+<h1><a class="anchor" id="autotoc_md21"></a>
+More Information</h1>
+<p>The complete <code><a class="el" href="eztr__api_8h.html" title="The main header for EZTR.">eztr_api.h</a></code> header is documented on this site. For more information, visit the various topic pages for each part of the API:</p>
+<ul>
+<li><a class="el" href="group___general.html">General</a> - General API Information</li>
+<li><a class="el" href="group___custom_msg_handle.html">CustomMsgHandle</a> - Macros and types used for working with the handles for custom messages.</li>
+<li><a class="el" href="group___types.html">Types</a> - Type definitions that EZTR uses for Majora's Mask messages.</li>
+<li><a class="el" href="group___control___code___macros.html">Control_Code_Macros</a> - Macros for the various control codes and non-printable bytes used in the Majora's Mask text encoding.</li>
+<li><a class="el" href="group___basic___replacement.html">Basic_Replacement</a> - Functions for replacing vanilla messages.</li>
+<li><a class="el" href="group___basic___custom_messages.html">Basic_CustomMessages</a> - Functions for creating and replacing new messages.</li>
+<li><a class="el" href="group___msg_buffer.html">MsgBuffer</a> - Functions for high-level message buffer operations.</li>
+<li><a class="el" href="group___msg_s_content.html">MsgSContent</a> - Functions for manipulating message text content. </li>
+</ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

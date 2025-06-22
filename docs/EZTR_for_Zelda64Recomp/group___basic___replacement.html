@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,21 +107,25 @@ $(function(){initNavTree('group___basic___replacement.html',''); initResizable(t
   <div class="headertitle"><div class="title">Basic_Replacement</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>functions for replacing vanilla messages.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga8001f916103311b701e403d62f776074" id="r_ga8001f916103311b701e403d62f776074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8001f916103311b701e403d62f776074">EZTR_Basic_ReplaceBuffer</a> (u16 textId, <a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a> callback)</td></tr>
 <tr class="memdesc:ga8001f916103311b701e403d62f776074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a replacement of a vanilla message by copying from a buffer defined by the user.  <br /></td></tr>
 <tr class="separator:ga8001f916103311b701e403d62f776074"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga130700fec5bb6f9469a5c41847f2fbb6" id="r_ga130700fec5bb6f9469a5c41847f2fbb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga130700fec5bb6f9469a5c41847f2fbb6">EZTR_Basic_ReplaceText</a> (u16 textId, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a> callback)</td></tr>
-<tr class="memdesc:ga130700fec5bb6f9469a5c41847f2fbb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a replacement of a vanilla message by defining the header attributes and message content.  <br /></td></tr>
-<tr class="separator:ga130700fec5bb6f9469a5c41847f2fbb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga98916bb31605dee625a2774ed476deaf" id="r_ga98916bb31605dee625a2774ed476deaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a> (u16 textId, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a> callback,...)</td></tr>
+<tr class="memdesc:ga98916bb31605dee625a2774ed476deaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a replacement of a vanilla message by defining the header attributes and message content.  <br /></td></tr>
+<tr class="separator:ga98916bb31605dee625a2774ed476deaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2c3d2fef5e69105140806673fce4d985" id="r_ga2c3d2fef5e69105140806673fce4d985"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga2c3d2fef5e69105140806673fce4d985">EZTR_Basic_ReplaceTextEmpty</a> (u16 textId, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a> callback)</td></tr>
 <tr class="memdesc:ga2c3d2fef5e69105140806673fce4d985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a replacement of a vanilla message, where the replacement message is empty.  <br /></td></tr>
 <tr class="separator:ga2c3d2fef5e69105140806673fce4d985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>These functions are your primary means of declaring replacement </p>
+<p>functions for replacing vanilla messages. </p>
+<p>These functions are currently your primary means of declaring replacements, using Majora's Mask's built-in dialog handling. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga8001f916103311b701e403d62f776074" name="ga8001f916103311b701e403d62f776074"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga8001f916103311b701e403d62f776074">&#9670;&#160;</a></span>EZTR_Basic_ReplaceBuffer()</h2>
@@ -161,8 +165,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga130700fec5bb6f9469a5c41847f2fbb6" name="ga130700fec5bb6f9469a5c41847f2fbb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga130700fec5bb6f9469a5c41847f2fbb6">&#9670;&#160;</a></span>EZTR_Basic_ReplaceText()</h2>
+<a id="ga98916bb31605dee625a2774ed476deaf" name="ga98916bb31605dee625a2774ed476deaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga98916bb31605dee625a2774ed476deaf">&#9670;&#160;</a></span>EZTR_Basic_ReplaceText()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -215,14 +219,20 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">EZTR_MsgCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Declare a replacement of a vanilla message by defining the header attributes and message content. </p>
 <p>This is probably the easiest method to declare replacement text.</p>
-<p>Note that this function is meant for replacing vanilla messages only. It will not allow you to use a textId greater than 0x354C, as that is the highest textId value found in the vanilla game. If you wish to create/modify a custom message, see <code><a class="el" href="group___basic___custom_messages.html#gaba5d26d7477edd4ba4ec2be15766e136" title="Declare a brand new (i.e: custom) message by defining the header attributes and message content.">EZTR_Basic_AddCustomText()</a></code> and <a class="el" href="group___basic___custom_messages.html#gabc25b8ecceac76911ea9dfc91d94d9e8" title="Declare a replacement of a custom message by defining the header attributes and message content.">EZTR_Basic_ReplaceCustomText()</a>`</p>
+<p>The <code>content</code> argument uses EZTR's printf formatting arguments, specified after <code>callback</code>. See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>Note that this function is meant for replacing vanilla messages only. It will not allow you to use a textId greater than 0x354C, as that is the highest textId value found in the vanilla game. If you wish to create/modify a custom message, see <code><a class="el" href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa" title="Declare a brand new (i.e: custom) message by defining the header attributes and message content.">EZTR_Basic_AddCustomText()</a></code> and <a class="el" href="group___basic___custom_messages.html#ga11e9f0dbf36eb25a91493c51aac6cd64" title="Declare a replacement of a custom message by defining the header attributes and message content.">EZTR_Basic_ReplaceCustomText()</a>`</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">textId</td><td>The id of the vanilla message you wish to replace. </td></tr>
@@ -233,8 +243,9 @@ Functions</h2></td></tr>
     <tr><td class="paramname">first_item_rupees</td><td>The price of the first item being offered for sale, if one exists. If there is no item, use 0xFFFF or <code>EZTR_NO_VALUE</code>. </td></tr>
     <tr><td class="paramname">second_item_rupees</td><td>The price of the second item being offered for sale, if one exists. If there is no item, use 0xFFFF or <code>EZTR_NO_VALUE</code>. </td></tr>
     <tr><td class="paramname">pipe_escape_bytes</td><td>If true, <code>content</code> is passed through <code>EZTR_MsgBuffer_Sprintf("%m", content)</code>. If false, then <code>content</code> is copied directly into storage. </td></tr>
-    <tr><td class="paramname">content</td><td>The new text content to display. If you want empty content (for use with dynamic messages), use "\xBF". </td></tr>
+    <tr><td class="paramname">content</td><td>The new text content to display. Accepts valid EZTR printf type specifiers. If you want empty content (for use with dynamic messages), use "\xBF". </td></tr>
     <tr><td class="paramname">callback</td><td>A function pointer to call right before this text is displayed. Useful for dynamic messages. Set as NULL if you don't want to use a callback. See <code><a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5" title="The function pointer type for message callbacks.">EZTR_MsgCallback</a></code> for more information. </td></tr>
+    <tr><td class="paramname">...</td><td>variable arguments, using EZTR's printf implementation. </td></tr>
   </table>
   </dd>
 </dl>

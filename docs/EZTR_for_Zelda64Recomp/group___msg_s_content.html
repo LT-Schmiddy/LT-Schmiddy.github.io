@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,11 +107,14 @@ $(function(){initNavTree('group___msg_s_content.html',''); initResizable(true); 
   <div class="headertitle"><div class="title">MsgSContent</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functions for manipulating message text content.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga9cdf97a6b5c9d99e1154d1709e6f2dc4" id="r_ga9cdf97a6b5c9d99e1154d1709e6f2dc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9cdf97a6b5c9d99e1154d1709e6f2dc4">EZTR_MsgSContent_SetEmpty</a> (char *cont)</td></tr>
-<tr class="memdesc:ga9cdf97a6b5c9d99e1154d1709e6f2dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the message message content as empty.A_BTN_STATE_IDLE.  <br /></td></tr>
+<tr class="memdesc:ga9cdf97a6b5c9d99e1154d1709e6f2dc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the message message content as empty.  <br /></td></tr>
 <tr class="separator:ga9cdf97a6b5c9d99e1154d1709e6f2dc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaffede5c9bbcd94fcedf72680c6ac3666" id="r_gaffede5c9bbcd94fcedf72680c6ac3666"><td class="memItemLeft" align="right" valign="top">u32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaffede5c9bbcd94fcedf72680c6ac3666">EZTR_MsgSContent_Len</a> (char *cont)</td></tr>
 <tr class="memdesc:gaffede5c9bbcd94fcedf72680c6ac3666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the length of the a message content string in bytes, not counting the '\xBF' termination character.  <br /></td></tr>
@@ -135,28 +138,50 @@ Functions</h2></td></tr>
 <tr class="memdesc:gaedf2e411789c0ad0061471c74ba87204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two message content strings.  <br /></td></tr>
 <tr class="separator:gaedf2e411789c0ad0061471c74ba87204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37a90a7c7b0c76188aedb8da5a39ec08" id="r_ga37a90a7c7b0c76188aedb8da5a39ec08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga37a90a7c7b0c76188aedb8da5a39ec08">EZTR_MsgSContent_Printf</a> (const char *format,...)</td></tr>
-<tr class="memdesc:ga37a90a7c7b0c76188aedb8da5a39ec08"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:ga37a90a7c7b0c76188aedb8da5a39ec08"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:ga37a90a7c7b0c76188aedb8da5a39ec08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad1ff11ca18271df5512699d276b6ba1e" id="r_gad1ff11ca18271df5512699d276b6ba1e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad1ff11ca18271df5512699d276b6ba1e">EZTR_MsgSContent_PrintfLine</a> (const char *format,...)</td></tr>
-<tr class="memdesc:gad1ff11ca18271df5512699d276b6ba1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:gad1ff11ca18271df5512699d276b6ba1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:gad1ff11ca18271df5512699d276b6ba1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf9672989bc812f2b03a238fe422e2f19" id="r_gaf9672989bc812f2b03a238fe422e2f19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a> (char *buffer, const char *format,...)</td></tr>
-<tr class="memdesc:gaf9672989bc812f2b03a238fe422e2f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:gaf9672989bc812f2b03a238fe422e2f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:gaf9672989bc812f2b03a238fe422e2f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac7c28d2307ddff188da8705b7b426ceb" id="r_gac7c28d2307ddff188da8705b7b426ceb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gac7c28d2307ddff188da8705b7b426ceb">EZTR_MsgSContent_Snprintf</a> (char *buffer, size_t count, const char *format,...)</td></tr>
-<tr class="memdesc:gac7c28d2307ddff188da8705b7b426ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:gac7c28d2307ddff188da8705b7b426ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:gac7c28d2307ddff188da8705b7b426ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8d5300f9289c9d3ed0b64175aef3c8b8" id="r_ga8d5300f9289c9d3ed0b64175aef3c8b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8d5300f9289c9d3ed0b64175aef3c8b8">EZTR_MsgSContent_Vsnprintf</a> (char *buffer, size_t count, const char *format, va_list va)</td></tr>
-<tr class="memdesc:ga8d5300f9289c9d3ed0b64175aef3c8b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:ga8d5300f9289c9d3ed0b64175aef3c8b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:ga8d5300f9289c9d3ed0b64175aef3c8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9de78728bd6fb85269e97d135ec69180" id="r_ga9de78728bd6fb85269e97d135ec69180"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga9de78728bd6fb85269e97d135ec69180">EZTR_MsgSContent_Vprintf</a> (const char *format, va_list va)</td></tr>
-<tr class="memdesc:ga9de78728bd6fb85269e97d135ec69180"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
+<tr class="memdesc:ga9de78728bd6fb85269e97d135ec69180"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument.  <br /></td></tr>
 <tr class="separator:ga9de78728bd6fb85269e97d135ec69180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga34be36f8427a9e5af06d8b3dabcf34c2" id="r_ga34be36f8427a9e5af06d8b3dabcf34c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga34be36f8427a9e5af06d8b3dabcf34c2">EZTR_MsgSContent_Fctprintf</a> (void(*out)(char character, void *arg), void *arg, const char *format,...)</td></tr>
 <tr class="memdesc:ga34be36f8427a9e5af06d8b3dabcf34c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content.  <br /></td></tr>
 <tr class="separator:ga34be36f8427a9e5af06d8b3dabcf34c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5eeb7fcc849810049c1a506a06bdc71c" id="r_ga5eeb7fcc849810049c1a506a06bdc71c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga5eeb7fcc849810049c1a506a06bdc71c">EZTR_MsgSContent_NoPipe_Printf</a> (const char *format,...)</td></tr>
+<tr class="memdesc:ga5eeb7fcc849810049c1a506a06bdc71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:ga5eeb7fcc849810049c1a506a06bdc71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadc04e28f1c18007161b6333c9802748c" id="r_gadc04e28f1c18007161b6333c9802748c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gadc04e28f1c18007161b6333c9802748c">EZTR_MsgSContent_NoPipe_PrintfLine</a> (const char *format,...)</td></tr>
+<tr class="memdesc:gadc04e28f1c18007161b6333c9802748c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:gadc04e28f1c18007161b6333c9802748c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad8d4b8eed3ef8f9c6e367bc56e8f04f6" id="r_gad8d4b8eed3ef8f9c6e367bc56e8f04f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gad8d4b8eed3ef8f9c6e367bc56e8f04f6">EZTR_MsgSContent_NoPipe_Sprintf</a> (char *buffer, const char *format,...)</td></tr>
+<tr class="memdesc:gad8d4b8eed3ef8f9c6e367bc56e8f04f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:gad8d4b8eed3ef8f9c6e367bc56e8f04f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0b44f3139b780bb14159618b4e4c2daa" id="r_ga0b44f3139b780bb14159618b4e4c2daa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga0b44f3139b780bb14159618b4e4c2daa">EZTR_MsgSContent_NoPipe_Snprintf</a> (char *buffer, size_t count, const char *format,...)</td></tr>
+<tr class="memdesc:ga0b44f3139b780bb14159618b4e4c2daa"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:ga0b44f3139b780bb14159618b4e4c2daa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1053665949273b2b0cc8f176629b3afc" id="r_ga1053665949273b2b0cc8f176629b3afc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga1053665949273b2b0cc8f176629b3afc">EZTR_MsgSContent_NoPipe_Vsnprintf</a> (char *buffer, size_t count, const char *format, va_list va)</td></tr>
+<tr class="memdesc:ga1053665949273b2b0cc8f176629b3afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:ga1053665949273b2b0cc8f176629b3afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaa71d940546269a2a224f59921066c8c" id="r_gaaa71d940546269a2a224f59921066c8c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaaa71d940546269a2a224f59921066c8c">EZTR_MsgSContent_NoPipe_Vprintf</a> (const char *format, va_list va)</td></tr>
+<tr class="memdesc:gaaa71d940546269a2a224f59921066c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:gaaa71d940546269a2a224f59921066c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab560bef290643908c9c2faf1291cca26" id="r_gab560bef290643908c9c2faf1291cca26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gab560bef290643908c9c2faf1291cca26">EZTR_MsgSContent_NoPipe_Fctprintf</a> (void(*out)(char character, void *arg), void *arg, const char *format,...)</td></tr>
+<tr class="memdesc:gab560bef290643908c9c2faf1291cca26"><td class="mdescLeft">&#160;</td><td class="mdescRight">A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier.  <br /></td></tr>
+<tr class="separator:gab560bef290643908c9c2faf1291cca26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Functions for manipulating message text content. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga72647d2cb1cbb660f9cb86df6074241f" name="ga72647d2cb1cbb660f9cb86df6074241f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga72647d2cb1cbb660f9cb86df6074241f">&#9670;&#160;</a></span>EZTR_MsgSContent_Cat()</h2>
@@ -213,8 +238,8 @@ Functions</h2></td></tr>
 <p>Compares two message content strings. </p>
 <p>This function is safe as long as both <code>str1</code> and <code>str2</code> point to the content region of message buffers, as the comparison will not continue beyond that size.</p>
 <p>Similar to <code>strcmp()</code> for null-terminated strings, but with one notable difference: With <code>strncmp()</code>, if two strings are equal for the first <code>n</code> characters, but one string continues after <code>n</code> while <br  />
- the other doesn't, the shorter string is considered 'lesser' because the null terminator &lsquo;&rsquo;\x00'<code>is naturally the lowest possible ASCII value. Because strings in MM are</code>'\XBF'` terminated, that behavior won't apply here.</p>
-<p>In <code><a class="el" href="#gaedf2e411789c0ad0061471c74ba87204" title="Compares two message content strings.">EZTR_MsgSContent_Cmp()</a></code>, a special case is applied: If two strings are equal for <code>n</code> characters, but the next character after <code>n</code> is &lsquo;&rsquo;\XBF'` in one of the strings, it is considered the lesser string regardless of what the other character is.</p>
+ the other doesn't, the shorter string is considered 'lesser' because the null terminator &lsquo;&rsquo;\x00'<code>is naturally the lowest possible ASCII value. Because strings in MM are</code>'\xBF'` terminated, that behavior won't apply here.</p>
+<p>In <code><a class="el" href="#gaedf2e411789c0ad0061471c74ba87204" title="Compares two message content strings.">EZTR_MsgSContent_Cmp()</a></code>, a special case is applied: If two strings are equal for <code>n</code> characters, but the next character after <code>n</code> is &lsquo;&rsquo;\xBF'` in one of the strings, it is considered the lesser string regardless of what the other character is.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str1</td><td>The first message content string to compare. </td></tr>
@@ -289,7 +314,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">out</td><td></td></tr>
@@ -396,8 +421,8 @@ Functions</h2></td></tr>
 
 <p>Compares up to <code>len</code> bytes of two message content strings. </p>
 <p>Similar to <code>strncmp()</code> for null-terminated strings, but with one notable difference: With <code>strncmp()</code>, if two strings are equal for the first <code>n</code> characters, but one string continues after <code>n</code> while <br  />
- the other doesn't, the shorter string is considered 'lesser' because the null terminator &lsquo;&rsquo;\x00'<code>is naturally the lowest possible ASCII value. Because strings in MM are</code>'\XBF'` terminated, that behavior won't apply here.</p>
-<p>In <code><a class="el" href="#ga79545ea629e4fb127ad978a8518c310f" title="Compares up to len bytes of two message content strings.">EZTR_MsgSContent_NCmp()</a></code>, a special case is applied: If two strings are equal for <code>n</code> characters, but the next character after <code>n</code> is &lsquo;&rsquo;\XBF'` in one of the strings, it is considered the lesser string regardless of what the other character is.</p>
+ the other doesn't, the shorter string is considered 'lesser' because the null terminator &lsquo;&rsquo;\x00'<code>is naturally the lowest possible ASCII value. Because strings in MM are</code>'\xBF'` terminated, that behavior won't apply here.</p>
+<p>In <code><a class="el" href="#ga79545ea629e4fb127ad978a8518c310f" title="Compares up to len bytes of two message content strings.">EZTR_MsgSContent_NCmp()</a></code>, a special case is applied: If two strings are equal for <code>n</code> characters, but the next character after <code>n</code> is &lsquo;&rsquo;\xBF'` in one of the strings, it is considered the lesser string regardless of what the other character is.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">str1</td><td>The first message content string to compare. </td></tr>
@@ -448,6 +473,273 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="gab560bef290643908c9c2faf1291cca26" name="gab560bef290643908c9c2faf1291cca26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab560bef290643908c9c2faf1291cca26">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Fctprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Fctprintf </td>
+          <td>(</td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>out&#160;</em></span>)(char character, void *arg), </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>arg</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td></td></tr>
+    <tr><td class="paramname">arg</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">...</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ga5eeb7fcc849810049c1a506a06bdc71c" name="ga5eeb7fcc849810049c1a506a06bdc71c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5eeb7fcc849810049c1a506a06bdc71c">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Printf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Printf </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">...</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="gadc04e28f1c18007161b6333c9802748c" name="gadc04e28f1c18007161b6333c9802748c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadc04e28f1c18007161b6333c9802748c">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_PrintfLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_PrintfLine </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">...</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ga0b44f3139b780bb14159618b4e4c2daa" name="ga0b44f3139b780bb14159618b4e4c2daa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0b44f3139b780bb14159618b4e4c2daa">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Snprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Snprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td></td></tr>
+    <tr><td class="paramname">count</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">...</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="gad8d4b8eed3ef8f9c6e367bc56e8f04f6" name="gad8d4b8eed3ef8f9c6e367bc56e8f04f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad8d4b8eed3ef8f9c6e367bc56e8f04f6">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Sprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Sprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>Unlike <code><a class="el" href="#ga37a90a7c7b0c76188aedb8da5a39ec08" title="A modified version of printf, specially designed to handle message content. This version uses pipe-es...">EZTR_MsgSContent_Printf()</a></code>, this function will append a newline to the end of console output.</p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">...</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="gaaa71d940546269a2a224f59921066c8c" name="gaaa71d940546269a2a224f59921066c8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaa71d940546269a2a224f59921066c8c">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Vprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Vprintf </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list</td>          <td class="paramname"><span class="paramname"><em>va</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">va</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a id="ga1053665949273b2b0cc8f176629b3afc" name="ga1053665949273b2b0cc8f176629b3afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1053665949273b2b0cc8f176629b3afc">&#9670;&#160;</a></span>EZTR_MsgSContent_NoPipe_Vsnprintf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EZTR_MsgSContent_NoPipe_Vsnprintf </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list</td>          <td class="paramname"><span class="paramname"><em>va</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A modified version of printf, specially designed to handle message content. This version does not use pipe-escaped byte handling in the main formatting argument, but are still used with the <code>m</code> type specifier. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td></td></tr>
+    <tr><td class="paramname">count</td><td></td></tr>
+    <tr><td class="paramname">format</td><td></td></tr>
+    <tr><td class="paramname">va</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+
+</div>
+</div>
 <a id="ga37a90a7c7b0c76188aedb8da5a39ec08" name="ga37a90a7c7b0c76188aedb8da5a39ec08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga37a90a7c7b0c76188aedb8da5a39ec08">&#9670;&#160;</a></span>EZTR_MsgSContent_Printf()</h2>
 
@@ -467,8 +759,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">format</td><td></td></tr>
@@ -499,8 +791,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">format</td><td></td></tr>
@@ -527,7 +819,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the message message content as empty.A_BTN_STATE_IDLE. </p>
+<p>Sets the message message content as empty. </p>
 <p>This is accomplished by setting the first character in the message content to the '\xBF' termination character. No other bytes are effected.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -567,8 +859,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td></td></tr>
@@ -606,9 +898,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>Unlike <code><a class="el" href="#ga37a90a7c7b0c76188aedb8da5a39ec08" title="A modified version of printf, specially designed to handle message content.">EZTR_MsgSContent_Printf()</a></code>, this function will append a newline to the end of console output.</p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>Unlike <code><a class="el" href="#ga37a90a7c7b0c76188aedb8da5a39ec08" title="A modified version of printf, specially designed to handle message content. This version uses pipe-es...">EZTR_MsgSContent_Printf()</a></code>, this function will append a newline to the end of console output.</p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td></td></tr>
@@ -640,8 +932,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">format</td><td></td></tr>
@@ -682,8 +974,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>A modified version of printf, specially designed to handle message content. </p>
-<p>see <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<p>A modified version of printf, specially designed to handle message content. This version uses pipe-escaped byte handling in the main formatting argument. </p>
+<p>See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buffer</td><td></td></tr>

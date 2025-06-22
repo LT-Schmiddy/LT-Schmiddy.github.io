@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,7 +106,107 @@ $(function(){initNavTree('custom_messages_and_handles.html',''); initResizable(t
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_docs_2_custom_01_messages_01and_01_handles"></a></p>
-<p>Page coming soon. </p>
+<p>EZTR fully supports adding new messages with unique message IDs to Majora's Mask for use in your mods. For example, if you want to create a brand-new NPC, you can use EZTR to define all of their dialog in a way that's fully compatible with the standard dialog/message system in Majora's Mask.</p>
+<p>The process is slightly different from regular text replacements, however. This page documents those differences and the important details to keep in mind when adding new messages.</p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+Quickstart</h1>
+<h2><a class="anchor" id="autotoc_md1"></a>
+How To Declare a Custom Message</h2>
+<p>To define a custom message, you'll need to create a handle for it. To do that, add the following code somewhere in one of your C files, outside of any functions:</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga112f8c80f439bbcb9c1fe6b04170fe00">EZTR_DEFINE_CUSTOM_MSG_HANDLE</a>(my_custom_message_handle);</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga112f8c80f439bbcb9c1fe6b04170fe00"><div class="ttname"><a href="group___custom_msg_handle.html#ga112f8c80f439bbcb9c1fe6b04170fe00">EZTR_DEFINE_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_DEFINE_CUSTOM_MSG_HANDLE(name)</div><div class="ttdoc">Creates a CustomMsgHandle object.</div><div class="ttdef"><b>Definition</b> eztr_api.h:150</div></div>
+</div><!-- fragment --><p>To access this handle in another C file, use the following to extern it in (works in C files or headers):</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#gacdc0de54255e72ccfbb93bd54517254f">EZTR_DECLARE_CUSTOM_MSG_HANDLE</a>(my_custom_message_handle);</div>
+<div class="line"><span class="comment">// Or, alternatively use:</span></div>
+<div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga0be8e08583bb0d5755f5fc3d1660e204">EZTR_EXTERN_CUSTOM_MSG_HANDLE</a>(my_custom_message_handle);</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga0be8e08583bb0d5755f5fc3d1660e204"><div class="ttname"><a href="group___custom_msg_handle.html#ga0be8e08583bb0d5755f5fc3d1660e204">EZTR_EXTERN_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_EXTERN_CUSTOM_MSG_HANDLE(name)</div><div class="ttdoc">Creates a declaration for a CustomMsgHandle object. Alternative to EZTR_DECLARE_CUSTOM_MSG_HANDLE.</div><div class="ttdef"><b>Definition</b> eztr_api.h:168</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_gacdc0de54255e72ccfbb93bd54517254f"><div class="ttname"><a href="group___custom_msg_handle.html#gacdc0de54255e72ccfbb93bd54517254f">EZTR_DECLARE_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_DECLARE_CUSTOM_MSG_HANDLE(name)</div><div class="ttdoc">Creates a declaration for a CustomMsgHandle object.</div><div class="ttdef"><b>Definition</b> eztr_api.h:160</div></div>
+</div><!-- fragment --><p>Then, in your <code>EZTR_ON_INIT</code> event function, you'll call <code>EZTR_Basic_AddCustomText</code>, <code>EZTR_Basic_AddCustomBuffer</code>, or <code>EZTR_Basic_AddCustomTextEmpty</code> using <code><a class="el" href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5" title="Shorthand for EZTR_CUSTOM_MSG_HANDLE_NAME()">EZTR_HNAME(test_message)</a></code> in the place of the handle argument. For example:</p>
+<div class="fragment"><div class="line"><a class="code hl_function" href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa">EZTR_Basic_AddCustomText</a>(<a class="code hl_define" href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5">EZTR_HNAME</a>(my_custom_message_handle), EZTR_STANDARD_TEXT_BOX_I, 0, EZTR_ICON_NO_ICON, </div>
+<div class="line">    <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <span class="keyword">false</span>, <span class="stringliteral">&quot;HELLO WORLD\xBF&quot;</span>, NULL);</div>
+<div class="ttc" id="aeztr__api_8h_html_a809bff127d072380b5fc99b3721051c7"><div class="ttname"><a href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a></div><div class="ttdeci">#define EZTR_NO_VALUE</div><div class="ttdoc">Used by certain members of EZTR_MsgData (and the message header generally) to indicate that said memb...</div><div class="ttdef"><b>Definition</b> eztr_api.h:304</div></div>
+<div class="ttc" id="agroup___basic___custom_messages_html_gace188a3f79116cc538daa69b2b60ebaa"><div class="ttname"><a href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa">EZTR_Basic_AddCustomText</a></div><div class="ttdeci">void EZTR_Basic_AddCustomText(EZTR_CustomMsgHandle handle, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, EZTR_MsgCallback callback,...)</div><div class="ttdoc">Declare a brand new (i.e: custom) message by defining the header attributes and message content.</div></div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga488a0c39d416b763314c4b194807c5e5"><div class="ttname"><a href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5">EZTR_HNAME</a></div><div class="ttdeci">#define EZTR_HNAME(name_suffix)</div><div class="ttdoc">Shorthand for EZTR_CUSTOM_MSG_HANDLE_NAME()</div><div class="ttdef"><b>Definition</b> eztr_api.h:200</div></div>
+</div><!-- fragment --><p>You can only pass a custom message handle to the <code>EZTR_Basic_AddCustom*</code> functions one time. Attempting to use the handle again will cause EZTR to print an error message.</p>
+<p>To get the actual text ID value (to display it with the Majora's Mask function <code>Message_StartTextbox</code>, for example), you can use <code><a class="el" href="group___custom_msg_handle.html#ga4d2bf9e6ca393d8ec562a21d177002e3" title="Gets the textId from a custom message handle.">EZTR_GET_ID_H(my_custom_message_handle)</a></code>. For example:</p>
+<div class="fragment"><div class="line">Message_StartTextbox(play, <a class="code hl_define" href="group___custom_msg_handle.html#ga4d2bf9e6ca393d8ec562a21d177002e3">EZTR_GET_ID_H</a>(my_custom_message_handle), NULL);</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga4d2bf9e6ca393d8ec562a21d177002e3"><div class="ttname"><a href="group___custom_msg_handle.html#ga4d2bf9e6ca393d8ec562a21d177002e3">EZTR_GET_ID_H</a></div><div class="ttdeci">#define EZTR_GET_ID_H(handle)</div><div class="ttdoc">Gets the textId from a custom message handle.</div><div class="ttdef"><b>Definition</b> eztr_api.h:221</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md2"></a>
+Replacing Custom Messages</h2>
+<p>If you know the name of a custom message handle from another mod, add that mod as a dependency to yours, then use the following code to import it.</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga726f3d2456c0acd0da0f73e9138de370">EZTR_IMPORT_CUSTOM_MSG_HANDLE</a>(<span class="stringliteral">&quot;other_mod_id&quot;</span>, external_custom_message_handle)</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga726f3d2456c0acd0da0f73e9138de370"><div class="ttname"><a href="group___custom_msg_handle.html#ga726f3d2456c0acd0da0f73e9138de370">EZTR_IMPORT_CUSTOM_MSG_HANDLE</a></div><div class="ttdeci">#define EZTR_IMPORT_CUSTOM_MSG_HANDLE(mod_str, name_suffix)</div><div class="ttdoc">Declares and imports a CustomMsgHandle object from another mod.</div><div class="ttdef"><b>Definition</b> eztr_api.h:176</div></div>
+</div><!-- fragment --><p>During your <code>EZTR_ON_INIT</code> event function, you can use <code>EZTR_Basic_ReplaceCustomText</code>, <code>EZTR_Basic_ReplaceCustomBuffer</code>, or <code>EZTR_Basic_ReplaceCustomTextEmpty</code> using <code><a class="el" href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5" title="Shorthand for EZTR_CUSTOM_MSG_HANDLE_NAME()">EZTR_HNAME(my_custom_message_handle)</a></code> as the handle argument. For example:</p>
+<div class="fragment"><div class="line"><a class="code hl_function" href="group___basic___custom_messages.html#ga11e9f0dbf36eb25a91493c51aac6cd64">EZTR_Basic_ReplaceCustomText</a>(<a class="code hl_define" href="group___custom_msg_handle.html#ga488a0c39d416b763314c4b194807c5e5">EZTR_HNAME</a>(external_custom_message_handle), EZTR_STANDARD_TEXT_BOX_I, 0, EZTR_ICON_NO_ICON, </div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>, <span class="keyword">false</span>, <span class="stringliteral">&quot;HELLO WORLD AGAIN!!\xBF&quot;</span>, NULL);</div>
+<div class="ttc" id="agroup___basic___custom_messages_html_ga11e9f0dbf36eb25a91493c51aac6cd64"><div class="ttname"><a href="group___basic___custom_messages.html#ga11e9f0dbf36eb25a91493c51aac6cd64">EZTR_Basic_ReplaceCustomText</a></div><div class="ttdeci">void EZTR_Basic_ReplaceCustomText(EZTR_CustomMsgHandle handle, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, EZTR_MsgCallback callback,...)</div><div class="ttdoc">Declare a replacement of a custom message by defining the header attributes and message content.</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
+Advanced Usage</h1>
+<p>Instructions on more advanced features, as well as technical information about how custom messages work, are found below.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+A Word on Implementation Decisions</h2>
+<p>Before we continue, I'd like to take a moment and explain some things. In order to understand the advanced usage, you first need to understand certain 'under-the-hood' details of the custom message system. And before I divulge that information, I'd like to explain why I settled on this implementation.</p>
+<p>There were 3 major challenges in implementing custom messages:</p>
+<ul>
+<li>Preventing message ID overlap.</li>
+<li>Ensuring efficient use of the message ID space.</li>
+<li>Ensuring custom messages can be replaced by other mods in the load order.</li>
+</ul>
+<p>The first challenge is easily addressed by having EZTR manage and assign the ID values for every new message declared, rather than allowing mods to declare their new message at any arbitrary ID value. The second and third challenges are not so easily handled.</p>
+<p>It's important to remember that message IDs in Majora's Mask are unsigned 16-bit integers, and EZTR is not able to change that. The highest message ID value used by the original game is 13644 (0x354C). Since the highest possible unsigned 16-bit integer is 65535, that leaves us 51891 remaining message IDs to work with. Sure, that's a fairly large number, but it's not impossible that problems could arise as Recomp modding matures—especially if a mod is badly designed. Since EZTR is responsible for handing out new message IDs (and obviously should not be handing out the same ID more than once), it's not inconceivable some inexperienced modder might try to implement dynamic text generation by declaring a new message entry for every variant of some statement. While EZTR's new restriction on declaring new messages outside of <code>EZTR_ON_INIT</code> will help with this (preventing those new messages from being generated during gameplay), it does not fully solve the issue. Dynamic text such as this can easily be handled with EZTR's callback system instead.</p>
+<p>For one mod to override a custom message from another mod is actually not as far-fetched a situation as one might expect. Perhaps someone wishes to create a translation patch for a custom NPC, or alter their dialog so that it matches up with content altered by another mod. Such patches are easy enough with vanilla messages, where the ID is a universal, hardcoded value, but less so when the ID is assigned at runtime by EZTR.</p>
+<p>After considering several possible implementations, I settled on the system described below for the following reasons:</p>
+<ul>
+<li>EZTR manages custom message ID assignments to prevent conflict between mods.</li>
+<li>It encourages frugality with declaring message IDs by ensuring that the number of message IDs a mod will receive is countable at compile time, and encouraging the use of dynamic messages via callbacks where appropriate.</li>
+<li>The IDs of specific custom messages are easily accessible (and the content replaceable) by additional mods without requiring significant performance overhead.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+What is A Custom Message Handle, anyway?</h2>
+<p>A custom message handle is actually a function, the body of which is constructed in your mod by the <code>EZTR_DEFINE_CUSTOM_MSG_HANDLE</code> macro in <code><a class="el" href="eztr__api_8h.html" title="The main header for EZTR.">eztr_api.h</a></code>.</p>
+<p>When expanded and formatted for readability, the resulting function for <code><a class="el" href="group___custom_msg_handle.html#ga112f8c80f439bbcb9c1fe6b04170fe00" title="Creates a CustomMsgHandle object.">EZTR_DEFINE_CUSTOM_MSG_HANDLE(my_custom_message_handle)</a></code> looks like this:</p>
+<div class="fragment"><div class="line">RECOMP_EXPORT u16 EZTR_CustomMsgHandle_my_custom_message_handle(_EZTR_CustomMsgHandleSetter* setter) {</div>
+<div class="line">    <span class="keyword">static</span> u16 id;</div>
+<div class="line">    <span class="keyword">static</span> u8 is_set = 0;</div>
+<div class="line">    <span class="keywordflow">if</span> (setter != NULL) {</div>
+<div class="line">        <span class="keywordflow">if</span> (is_set) {</div>
+<div class="line">            _EZTR_ReportErrorMessage(<span class="stringliteral">&quot;The textId of EZTR_CustomMsgHandle &#39;my_custom_message_handle&#39; has already been set and will not be updated.&quot;</span>);</div>
+<div class="line">            setter-&gt;out_success = 0;</div>
+<div class="line">        } <span class="keywordflow">else</span> { </div>
+<div class="line">            <span class="keywordtype">id</span> = setter-&gt;new_id;</div>
+<div class="line">            is_set = 1;</div>
+<div class="line">            setter-&gt;out_success = 1;</div>
+<div class="line">        }</div>
+<div class="line">    } </div>
+<div class="line">    <span class="keywordflow">return</span> id; </div>
+<div class="line">}</div>
+</div><!-- fragment --><p>First of all, you'll notice that the full function name has the prefix <code>EZTR_CustomMsgHandle_</code>. This is meant to distinguish it as a custom message handle, and not an ordinary function. The <code>HNAME(my_custom_message_handle)</code> macro expands to the full function name and is used for readability. You'll also notice that the function is marked as <code>RECOMP_EXPORT</code> automatically.</p>
+<p>As you can see, the message ID is stored in a static variable within the function. There's also a different static variable that records whether the handle has been assigned before.</p>
+<p>When being assigned, EZTR calls the handle function with a pointer to a configuration struct. If the handle hasn't been set before, the ID is read and the operation is marked as a success in the struct (so EZTR knows that the provided ID was accepted). If the handle was assigned before, an error message is printed (using a private function in EZTR's API), and the operation is marked as a failure in the struct (so EZTR knows it can use that ID value again). In either case, the function returns the message ID. If the assignment was reported as a success, EZTR will check the returned ID against the value in the configuration struct to ensure that the handle function is working correctly.</p>
+<p>If the function is called with the configuration pointer set to <code>NULL</code>, no assignment operation is attempted. In all cases, the function will return the message ID value. That means that a handle's ID can be accessed by calling <code>EZTR_CustomMsgHandle_my_custom_message_handle(NULL)</code>. In fact, this is exactly how the various <code>GET_ID</code> macros work.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Disabling the Handle Prefix</h2>
+<p>If you want to disable use of the <code>EZTR_CustomMsgHandle_</code> prefix, you can declare <code>#define EZTR_NO_HANDLE_PREFIX</code> before including <code><a class="el" href="eztr__api_8h.html" title="The main header for EZTR.">eztr_api.h</a></code>, or add <code>-DEZTR_NO_HANDLE_PREFIX</code> to your compilation flags. If you do this, you won't need to use <code>HNAME</code> when referencing your handle by name, but it's recommended that you then add your own prefix instead.</p>
+<p>If another mod has the handle prefix disabled, you can import its handles by using:</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga9e093f08327ca500c2e45143d94d3565">EZTR_IMPORT_CUSTOM_MSG_HANDLE_NO_PREFIX</a>(<span class="stringliteral">&quot;other_mod_id&quot;</span>, external_custom_message_handle);</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga9e093f08327ca500c2e45143d94d3565"><div class="ttname"><a href="group___custom_msg_handle.html#ga9e093f08327ca500c2e45143d94d3565">EZTR_IMPORT_CUSTOM_MSG_HANDLE_NO_PREFIX</a></div><div class="ttdeci">#define EZTR_IMPORT_CUSTOM_MSG_HANDLE_NO_PREFIX(mod_str, name)</div><div class="ttdoc">Declares and imports a CustomMsgHandle object from another mod.</div><div class="ttdef"><b>Definition</b> eztr_api.h:183</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+Disabling Handle Exports</h2>
+<p>If, for some reason, you don't want to export a particular message handle, you can use the macro:</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="group___custom_msg_handle.html#ga7dd4c9646967113b1f3215c33843a3d7">EZTR_DEFINE_CUSTOM_MSG_HANDLE_NO_EXPORT</a>(my_custom_message_handle);</div>
+<div class="ttc" id="agroup___custom_msg_handle_html_ga7dd4c9646967113b1f3215c33843a3d7"><div class="ttname"><a href="group___custom_msg_handle.html#ga7dd4c9646967113b1f3215c33843a3d7">EZTR_DEFINE_CUSTOM_MSG_HANDLE_NO_EXPORT</a></div><div class="ttdeci">#define EZTR_DEFINE_CUSTOM_MSG_HANDLE_NO_EXPORT(name)</div><div class="ttdoc">Creates a non-exported CustomMsgHandle object.</div><div class="ttdef"><b>Definition</b> eztr_api.h:136</div></div>
+</div><!-- fragment --><p>This macro functions the same as <code>EZTR_DEFINE_CUSTOM_MSG_HANDLE</code>, but doesn't add <code>RECOMP_EXPORT</code>.</p>
+<p>This is not recommended.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Using Handles as Variables and Arguments</h2>
+<p>EZTR provides a type definition for custom message handles called <code><a class="el" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f" title="The type declaration for custom message handle.">EZTR_CustomMsgHandle</a></code>, which is defined as</p>
+<div class="fragment"><div class="line"><span class="keyword">typedef</span> u16 (*<a class="code hl_typedef" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f">EZTR_CustomMsgHandle</a>)(_EZTR_CustomMsgHandleSetter* setter);</div>
+<div class="ttc" id="agroup___types_html_gaf14c939010aeb8ff548788278b5e1b0f"><div class="ttname"><a href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f">EZTR_CustomMsgHandle</a></div><div class="ttdeci">u16(* EZTR_CustomMsgHandle)(_EZTR_CustomMsgHandleSetter *setter)</div><div class="ttdoc">The type declaration for custom message handle.</div><div class="ttdef"><b>Definition</b> eztr_api.h:388</div></div>
+</div><!-- fragment --><p>This will allow you to use a custom message handle as you would a regular function pointer. Obviously, you won't need to use the <code>HNAME</code> macro when you do this.</p>
+<p>Note that the <code>EZTR_GET_ID_H</code> macro is shorthand for <code><a class="el" href="group___custom_msg_handle.html#ga460cf0c3dd365f18ebb0b3e939b992db" title="Gets the textId from a custom message handle.">EZTR_GET_ID(EZTR_HNAME(my_handle))</a></code>, and therefore shouldn't be used with function pointers. Use <code>EZTR_GET_ID</code> instead.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Further Info</h2>
+<p>For more information on EZTR Custom Message Handles, you can find the complete documentation of all involved macros and types under <a class="el" href="group___custom_msg_handle.html">CustomMsgHandle</a>. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

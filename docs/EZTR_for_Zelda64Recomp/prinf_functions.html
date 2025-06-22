@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,31 +107,56 @@ $(function(){initNavTree('prinf_functions.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_docs_2_e_z_t_r_01_printf_01_functions"></a></p>
 <p>Because the message content are terminated.</p>
-<h1><a class="anchor" id="autotoc_md0"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Differences from Standard <code>[s[n]]printf</code></h1>
 <p>There are a few major differences to note between the standard <code>printf</code> functions and EZTR's implementations:</p>
 <ul>
 <li><a class="el" href="#bf_termination"><code>\xBF</code> Termination</a></li>
 <li><a class="el" href="#pipe_escaped_bytes">Pipe-Escaped Byte Syntax</a></li>
-<li><a class="el" href="#m_type_specifier">The <code>%m</code> Type Specifier</a></li>
+<li><a class="el" href="#m_type_specifier">The <code>%m</code> and <code>%M</code> Type Specifiers</a></li>
 <li><a class="el" href="#non_printable_bytes">Non-Printable Bytes</a></li>
 </ul>
 <h2><a class="anchor" id="bf_termination"></a>
 <code>\xBF</code> Termination</h2>
-<p>Because message strings use the <code>\0</code> null character as an indicator to</p>
-<p>See <a class="el" href="the_message_buffer.html">The Message Buffer</a> for more information.</p>
+<p>Message strings do not use the <code>\0</code> null character to terminate, as is done in standard ASCII. Instead, strings are terminated with <code>\xBF</code>, and <code>\0</code> is used as the control code to set the text color back to normal. As a result of this, EZTR cannot assume your string arguments will be <code>\0</code> terminated either. It is expected that any message data argument of a <code>EZTR_MsgSContent_*</code> function will manually terminated with <code>\xBF</code> by the programmer.</p>
+<p>See <a class="el" href="the_message_buffer.html">The Message Buffer</a> for more information on message control codes and massage termination.</p>
 <h2><a class="anchor" id="pipe_escaped_bytes"></a>
 Pipe-Escaped Byte Syntax</h2>
-<p>Lorem Ipsum</p>
+<p>Because of the non-standard encoding that Majora's Mask uses for control characters, EZTR offers an optional special syntax for handling these in the form of "Pipe-escaped bytes". When used, single bytes can be written in your string using the syntax <code>|XX</code>, where each <code>X</code> is a hexidecimal character. Note that this only does a single byte at a time, so the correct way to write 2 bytes would be <code>|XX|XX</code> and not <code>|XXXX</code> (unlike the <code>\x</code> escape sequence used by C, where <code>\xXXXX</code> would be a valid expression of two bytes). This is a useful feature if you need to load message data from an external, ASCII or Unicode-based source.</p>
+<p>Pipe-escaped bytes are used in 3 places:</p>
+<ul>
+<li>The <code>format</code> argument of any of the normal <code>EZTR_MsgSContent_*Printf</code> functions (the ones with <code>NoPipe</code> in the name are alternate versions without this behavior).</li>
+<li>Passing message content to any <code>EZTR_MsgSContent_*Printf</code> (including the <code>NoPipe</code> versions) using the <code>m</code> or <code>q</code> type specifiers.</li>
+<li>The <code>content</code> argument of <code>EZTR_Basic_ReplaceText</code>, <code>EZTR_Basic_AddCustomText</code>, and <code>EZTR_Basic_ReplaceCustomText</code>, provided the <code>pipe_escaped_bytes</code> argument is set to true.</li>
+</ul>
+<p>Note that this feature is entirely optional. EZTR is fully capable of processing control code bytes directly (such as using C escape sequences in string literals).</p>
 <h2><a class="anchor" id="m_type_specifier"></a>
-The <code>%m</code> Type Specifier</h2>
-<p>Lorem Ipsum</p>
+The <code>%m</code> and <code>%M</code> Type Specifiers</h2>
+<p>Because the <code>s</code> string specifier in C expects the argument to be <code>\0</code> terminated, the specifier cannot be easily used to pass in control codes and formatting data. To solve this, <code>EZTR_MsgSContent_*Printf</code> have two unique specifiers: <code>%m</code> and <code>%M</code>. These specifiers function identically to <code>s</code> except they assume that the corresponding argument is Majora's Mask message data and thus <code>\xBF</code> terminated.</p>
+<p>That is to say, when using <code>%m</code> and <code>%M</code> to pass in message data, terminate your argument with <code>\xBF</code>. This argument termination will not be copied into the output string (much like how <code>*printf</code> doesn't copy in the <code>\0</code> null terminator from <code>s</code> arguments).</p>
+<p>The only difference between <code>%m</code> and <code>%M</code> is that <code>%m</code> processes pipe-escaped bytes, whereas <code>%M</code> does not.</p>
+<h2><a class="anchor" id="q_type_specifiers"></a>
+The <code>%q</code> Type Specifiers</h2>
+<p><code>%q</code> is a <code>\0</code> null terminated string, like <code>%s</code>, except that it also processes pipe-escaped bytes. This allows you to pass in message content strings using the pipe-escaped byte syntax, but without needing to manually add <code>\xBF</code> or <code>|BF</code> at the end of the argument, making this type specifier useful for copying message data from external applications or sources. Note that this specifier stops writing to the buffer ONLY when the <code>\0</code> byte is encountered, and not as a pipe-escaped byte. Therefore, if <code>|BF</code> or <code>|00</code> is encountered, it will be converted into corresponding byte, but writing will continue anyway.</p>
+<h2><a class="anchor" id="w_type_specifiers"></a>
+The <code>%w</code> Type Specifiers</h2>
+<p><code>%w</code> is a two-byte version of the <code>%c</code> flag. Although Majora's Mask doesn't make use of wide characters in displaying text, several control codes will use the following two bytes as an argument that affects their behavior. The <code>%w</code> specifier makes it easy to set the argument value via a printf argument.</p>
+<p>The control codes that use this behavior are:</p>
+<ul>
+<li><code>EZTR_CC_BOX_BREAK_DELAYED</code> (hex value <code>0x1B</code>)</li>
+<li><code>EZTR_CC_FADE</code> (hex value <code>0x1C</code>)</li>
+<li><code>EZTR_CC_FADE_SKIPPABLE</code> (hex value <code>0x1D</code>)</li>
+<li><code>EZTR_CC_SFX</code> (hex value <code>0x1E</code>)</li>
+<li><code>EZTR_CC_DELAY</code> (hex value <code>0x1F</code>)</li>
+</ul>
+<p>Control code <code>EZTR_CC_SHIFT</code> (hex value <code>0x14</code>) uses a single following byte as its argument, and thus the value for that can be specified with <code>%c</code>.</p>
 <h2><a class="anchor" id="non_printable_bytes"></a>
 Non-Printable Bytes</h2>
-<h1><a class="anchor" id="autotoc_md1"></a>
+<p>When printing to the console using <code>EZTR_MsgSContent_Printf</code>, <code>EZTR_MsgSContent_PrintfLine</code>, or the <code>NoPipe</code> variants thereof, all control codes are displayed according to EZTR's <code>text_dumping_byte_format</code> and <code>text_dumping_cc_macros</code> options. This does not apply to any other printf functions, which preserves the control bytes.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Format Specification</h1>
 <p>A format specifier follows this prototype: <code>%[flags][width][.precision][length]type</code> The following format specifiers are supported:</p>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Supported Types</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -157,15 +182,22 @@ Supported Types</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">c   </td><td class="markdownTableBodyNone">Single character    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">s   </td><td class="markdownTableBodyNone">String of characters. To offer parity with standard C, it is assumed that this string is null-terminated.    </td></tr>
+<td class="markdownTableBodyNone">s   </td><td class="markdownTableBodyNone">ASCII string of characters. To offer parity with standard C, it is assumed that this string is null-terminated.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">m   </td><td class="markdownTableBodyNone">Message content string. This is a unique type implemented by EZTR.    </td></tr>
+<td class="markdownTableBodyNone">q   </td><td class="markdownTableBodyNone">ASCII string of characters. Like <code>s</code>, it is assumed that this string is null-terminated, but pipe-escaped bytes will still be evaluated.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">p   </td><td class="markdownTableBodyNone">Pointer address    </td></tr>
+<td class="markdownTableBodyNone">m   </td><td class="markdownTableBodyNone">Message content string using pipe-escaped bytes.    </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">M   </td><td class="markdownTableBodyNone">Message content string NOT using pipe-escaped bytes.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">w   </td><td class="markdownTableBodyNone">Unsigned 16-bit value to be inserted into the byte string raw. Useful for pass argument bytes following <code>EZTR_CC_SFX</code>, <code>EZTR_CC_DELAY</code>, etc.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">p   </td><td class="markdownTableBodyNone">Pointer address    </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">%   </td><td class="markdownTableBodyNone">A % followed by another % character will write a single %   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md3"></a>
+<p>Specifiers <code>%m</code>, <code>%M</code>, <code>%q</code>, and <code>%w</code> are unique to EZTR.</p>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Supported Flags</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -181,7 +213,7 @@ Supported Flags</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">Left-pads the number with zeros (0) instead of spaces when padding is specified (see width sub-specifier).   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Supported Width</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -191,7 +223,7 @@ Supported Width</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">*   </td><td class="markdownTableBodyNone">The width is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 Supported Precision</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -201,7 +233,7 @@ Supported Precision</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">.*   </td><td class="markdownTableBodyNone">The precision is not specified in the format string, but as an additional integer value argument preceding the argument that has to be formatted.   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Supported Length</h2>
 <p>The length sub-specifier modifies the length of the data type.</p>
 <table class="markdownTable">
@@ -224,14 +256,14 @@ Supported Length</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">t   </td><td class="markdownTableBodyNone">ptrdiff_t   </td><td class="markdownTableBodyNone">ptrdiff_t (if PRINTF_SUPPORT_PTRDIFF_T is defined)   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Return Value</h2>
 <p>Upon successful return, all functions return the number of characters written, <em>excluding</em> the terminating null character used to end the string. Functions <code>snprintf()</code> and <code>vsnprintf()</code> don't write more than <code>count</code> bytes, <em>including</em> the terminating null byte ('\xBF'). Anyway, if the output was truncated due to this limit, the return value is the number of characters that <em>could</em> have been written. Notice that a value equal or larger than <code>count</code> indicates a truncation. Only when the returned value is non-negative and less than <code>count</code>, the string has been completely written. If any error is encountered, <code>-1</code> is returned.</p>
 <p>If <code>buffer</code> is set to <code>NULL</code> (<code>nullptr</code>) nothing is written and just the formatted length is returned.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> length = sprintf(NULL, <span class="stringliteral">&quot;Hello, world&quot;</span>); <span class="comment">// length is set to 12</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
 Credits</h1>
-<p>Special thanks to <a href="https://github.com/mpaland/">mpaland on GitHub</a> for creating this <a href="https://github.com/mpaland/printf">embedded printf library</a>, as EZTR's printf logic a modified version of this project. The documentation on this page is partially copied from there as well.</p>
+<p>Special thanks to <a href="https://github.com/mpaland/">mpaland on GitHub</a> for creating this <a href="https://github.com/mpaland/printf">embedded printf library</a>, as EZTR's printf logic is a modified version of this project. The documentation on this page is partially copied from there as well.</p>
 <p>(<a href="https://github.com/mpaland/printf">https://github.com/mpaland/printf</a>) </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

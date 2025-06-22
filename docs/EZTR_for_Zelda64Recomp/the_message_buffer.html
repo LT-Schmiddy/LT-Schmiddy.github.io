@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,8 +106,98 @@ $(function(){initNavTree('the_message_buffer.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_docs_2_the_01_message_01_buffer"></a></p>
-<p>Page coming soon.</p>
-<p>But in the meantime, you can find a lot of useful information here: <a href="https://wiki.cloudmodding.com/mm/Text_Format">https://wiki.cloudmodding.com/mm/Text_Format</a> </p>
+<p>This document provides high-level information about text handling in Majora's Mask and the text manipulation tools provided by EZTR. This is not meant to be an in-depth guide to everything related to EZTR and Majora's Mask text, but a quick overview to get you started with EZTR.</p>
+<p>If you want a more in-depth look at Majora's Mask text handling, I recommend this page: <a href="https://wiki.cloudmodding.com/mm/Text_Format">https://wiki.cloudmodding.com/mm/Text_Format</a></p>
+<h1><a class="anchor" id="autotoc_md22"></a>
+Text in Majora's Mask</h1>
+<p>EZTR makes no changes to how the messages and text data in Majora's Mask are structured, stored, and processed. Therefore, any information relevant to text in vanilla Majora's Mask should be applicable to EZTR.</p>
+<p>In brief, the first 11 bytes of a message are a header, with the content of the message itself following after. The header is laid out in the following way:</p>
+<ul>
+<li>(1 byte) The text box type/style. <a class="el" href="group___types.html#gac7a0819ee2ed5d0e939030ae98b9171c">EZTR_TextBoxType</a> provides readable names for each textbox type.</li>
+<li>(1 byte) The text box's Y position on screen.</li>
+<li>(1 byte) What icon (if any) to display with the text. <a class="el" href="group___types.html#ga716ef28fc50ca98601dddf9fb05240cb">EZTR_TextBoxIcon</a> provides readable names for each textbox UI icon.</li>
+<li>(2 bytes) The ID of the next message to display. If there is no next message, or the next message is determined by code, use <code>0xFFFF</code> or the <code>EZTR_NO_VALUE</code> macro.</li>
+<li>(2 bytes) The cost of the first item being offered for sale, in rupees. If there is no item, use <code>0xFFFF</code> or the <code>EZTR_NO_VALUE</code> macro.</li>
+<li>(2 bytes) The cost of the second item being offered for sale, in rupees. If there is no item, use <code>0xFFFF</code> or the <code>EZTR_NO_VALUE</code> macro.</li>
+<li>2 bytes of padding.</li>
+</ul>
+<p>All data after the header is considered part of the message content.</p>
+<p>The text encoding of the message content is non-standard: while all the printable characters are standard ASCII, the control codes are not. Of particular note, the termination character is <code>\xBF</code> rather than <code>\x00</code> (also written as <code>\0</code>). Most of the control codes are documented on the <a class="el" href="group___control___code___macros.html">Control_Code_Macros</a> page.</p>
+<p>The header and content regions combined cannot be more than 1280 bytes, as that is the maximum size of the vanilla buffer. Since the header is 11 bytes, that leaves 1269 bytes for the content region.</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+When to Work with Message Buffer</h1>
+<p>Depending on what you're doing, you may not need to work with message buffers directly. For example, while EZTR does store messages as preconstructed message buffers, the functions <a class="el" href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a>, <a class="el" href="group___basic___custom_messages.html#gace188a3f79116cc538daa69b2b60ebaa">EZTR_Basic_AddCustomText</a>, and <a class="el" href="group___basic___custom_messages.html#ga11e9f0dbf36eb25a91493c51aac6cd64">EZTR_Basic_ReplaceCustomText</a> all construct and store the message buffer for you. The only consideration you'll need to make is the maximum size of the <code>content</code> variable in each case, since that region cannot be larger than 1269 bytes.</p>
+<p>Some cases where you'd work with the message buffer directly include:</p>
+<ul>
+<li>Dynamically generating messages using EZTR's message callback system.</li>
+<li>Loading custom messages from some external source.</li>
+<li>Simple text processing using Majora's Mask's encoding.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md24"></a>
+Working with the Message Buffer</h1>
+<p>To begin with, EZTR uses the type <a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> to represent the Majora's Mask message buffer. It's a union between a couple different ways to represent the message buffer information. Of particular note is the <code>data</code> member, which lets you assign to each part of the header as well as the content region by treating the buffer as a packed struct. Read the type's own documentation for more details.</p>
+<p>EZTR also provides many functions for operating on message buffers (too many to list here). These functions are broken up into two categories:</p>
+<p><a class="el" href="group___msg_buffer.html">MsgBuffer</a> provides general operations such as creating and destroying buffers, copying from one buffer to another, and getting the size of the data on the buffer. It also provides getters and setters for the buffer's header data (as an alternative to the packed struct).</p>
+<p><a class="el" href="group___msg_s_content.html">MsgSContent</a> provides string operations designed to work with the unique encoding of Majora's Mask message data. It includes reimplemented versions of standard C functions such as <code>str[n]cpy</code>, <code>str[n]cmp</code>, <code>str[n]len</code>, <code>str[n]cat</code>, and even <code>[s[n]]printf</code>. Note that these functions are designed to operate on any <code>\xBF</code>-terminated <code>char</code> array, not just the content region of message buffers. As a result, if you want to operate on a message buffer's content, you'll need a pointer to the content region. You can get this using the <a class="el" href="group___msg_buffer.html#ga21eec47bd44a5a81b37aa88561d17146">EZTR_MsgBuffer_GetContentPtr</a> function, or the <code>data.content</code> member of <a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a>.</p>
+<h1><a class="anchor" id="message_buffer_and_callbacks"></a>
+The Message Buffer and Callbacks</h1>
+<p>The most common time you'll use a message buffer directly is when using EZTR's message callbacks to create dynamically generated messages.</p>
+<p>EZTR makes message callbacks easy to set up, as EZTR provides a macro that simplifies declaring callback functions. See <a class="el" href="eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3">EZTR_MSG_CALLBACK</a> for more information.</p>
+<p>When run, the callback will receive an <code><a class="el" href="union_e_z_t_r___msg_buffer.html" title="A union of the three MsgBuffer structs, and the primary type for interacting with message data.">EZTR_MsgBuffer</a></code> pointer. The lifetime of this buffer is managed by EZTR internally, and therefore you should NOT try to destroy it.</p>
+<p>The buffer will be prepopulated with a copy of the message data EZTR has stored, which will then be passed on to the Majora's Mask message handler to be displayed.</p>
+<p>For example, consider this code used by the <em>Forms Use More Items</em> mod. We define the message replacement with the header options we want and a default message. Then, when the message is loaded, <code>day_1_and_2_callback</code> is called, letting us overwrite the content of the message if appropriate.</p>
+<div class="fragment"><div class="line"><a class="code hl_define" href="eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3">EZTR_MSG_CALLBACK</a>(day_1_and_2_callback) {</div>
+<div class="line">    <span class="comment">// The function this macro expands to has the arguments `(EZTR_MsgBuffer* buf, u16 textId, PlayState* play)`.</span></div>
+<div class="line">    Player* player = GET_PLAYER(play);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (player-&gt;transformation == PLAYER_FORM_GORON || player-&gt;transformation == PLAYER_FORM_FIERCE_DEITY) {</div>
+<div class="line">        <span class="comment">// If we&#39;re Goron Link or Fierce Deity Link, use this dialog instead.</span></div>
+<div class="line">        <a class="code hl_function" href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a>(buf-&gt;data.content, <a class="code hl_define" href="group___control___code___macros.html#gaa940a0b74f0e940567852dffa2f5b6bc">EZTR_CC_SFX_ARGW</a> <span class="stringliteral">&quot;What shall we do, Honey?&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;From what I can see, he&#39;s too&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;heavy for the platform to support.&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>, NA_SE_VO_DAVO02);</div>
+<div class="line"> </div>
+<div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (player-&gt;transformation == PLAYER_FORM_ZORA) {</div>
+<div class="line">        <span class="comment">// If we&#39;re Zora Link, use this dialog instead.</span></div>
+<div class="line">        <a class="code hl_function" href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a>(buf-&gt;data.content, <a class="code hl_define" href="group___control___code___macros.html#gaa940a0b74f0e940567852dffa2f5b6bc">EZTR_CC_SFX_ARGW</a> <span class="stringliteral">&quot;He&#39;s a celebrity, Honey.&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;You wouldn&#39;t want me to think&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;I have competition, do you?&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>, NA_SE_VO_DAVO02);</div>
+<div class="line">    } </div>
+<div class="line">    <span class="comment">// Otherwise, use the stored (vanilla) dialog.</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_define" href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a> <span class="keywordtype">void</span> setup_messages() {</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Replacements for Honey &amp; Darling</span></div>
+<div class="line">    <a class="code hl_function" href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a>(</div>
+<div class="line">        0x2841,</div>
+<div class="line">        EZTR_STANDARD_TEXT_BOX_I,</div>
+<div class="line">        0,</div>
+<div class="line">        EZTR_ICON_NO_ICON,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <a class="code hl_define" href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a>,</div>
+<div class="line">        <span class="keyword">false</span>,</div>
+<div class="line">        <a class="code hl_define" href="group___control___code___macros.html#gaa940a0b74f0e940567852dffa2f5b6bc">EZTR_CC_SFX_ARGW</a> <span class="stringliteral">&quot;What shall we do, Honey?&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;From what I can see, he doesn&#39;t&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a> <span class="stringliteral">&quot;seem to be able to carry &quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga5fb95ecde8a1a6d2965909d6e71f4f4a">EZTR_CC_COLOR_RED</a> <span class="stringliteral">&quot;bombs&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga3d8b0bc9cf010278ceaadefb12ead4ec">EZTR_CC_COLOR_DEFAULT</a> <span class="stringliteral">&quot;.&quot;</span> <a class="code hl_define" href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a> <a class="code hl_define" href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a>,</div>
+<div class="line">        day_1_and_2_callback,</div>
+<div class="line">        NA_SE_VO_DAVO02</div>
+<div class="line">    );</div>
+<div class="line">}</div>
+<div class="ttc" id="aeztr__api_8h_html_a04bd5b4fa086a6baf377da8e21b478b3"><div class="ttname"><a href="eztr__api_8h.html#a04bd5b4fa086a6baf377da8e21b478b3">EZTR_MSG_CALLBACK</a></div><div class="ttdeci">#define EZTR_MSG_CALLBACK(fname)</div><div class="ttdoc">A macro to easily create message callback functions.</div><div class="ttdef"><b>Definition</b> eztr_api.h:243</div></div>
+<div class="ttc" id="aeztr__api_8h_html_a716f6a6679ad9e38a4f93a18ad54ece5"><div class="ttname"><a href="eztr__api_8h.html#a716f6a6679ad9e38a4f93a18ad54ece5">EZTR_ON_INIT</a></div><div class="ttdeci">#define EZTR_ON_INIT</div><div class="ttdoc">Used to declare a function that should run after EZTR has finished initializing.</div><div class="ttdef"><b>Definition</b> eztr_api.h:258</div></div>
+<div class="ttc" id="aeztr__api_8h_html_a809bff127d072380b5fc99b3721051c7"><div class="ttname"><a href="eztr__api_8h.html#a809bff127d072380b5fc99b3721051c7">EZTR_NO_VALUE</a></div><div class="ttdeci">#define EZTR_NO_VALUE</div><div class="ttdoc">Used by certain members of EZTR_MsgData (and the message header generally) to indicate that said memb...</div><div class="ttdef"><b>Definition</b> eztr_api.h:304</div></div>
+<div class="ttc" id="agroup___basic___replacement_html_ga98916bb31605dee625a2774ed476deaf"><div class="ttname"><a href="group___basic___replacement.html#ga98916bb31605dee625a2774ed476deaf">EZTR_Basic_ReplaceText</a></div><div class="ttdeci">void EZTR_Basic_ReplaceText(u16 textId, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, EZTR_MsgCallback callback,...)</div><div class="ttdoc">Declare a replacement of a vanilla message by defining the header attributes and message content.</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga3d8b0bc9cf010278ceaadefb12ead4ec"><div class="ttname"><a href="group___control___code___macros.html#ga3d8b0bc9cf010278ceaadefb12ead4ec">EZTR_CC_COLOR_DEFAULT</a></div><div class="ttdeci">#define EZTR_CC_COLOR_DEFAULT</div><div class="ttdoc">Following Text Color: Default.</div><div class="ttdef"><b>Definition</b> eztr_api.h:710</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga5fb95ecde8a1a6d2965909d6e71f4f4a"><div class="ttname"><a href="group___control___code___macros.html#ga5fb95ecde8a1a6d2965909d6e71f4f4a">EZTR_CC_COLOR_RED</a></div><div class="ttdeci">#define EZTR_CC_COLOR_RED</div><div class="ttdoc">Following Text Color: Red.</div><div class="ttdef"><b>Definition</b> eztr_api.h:715</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga7588b075b66c154a715dbfa07d4236ec"><div class="ttname"><a href="group___control___code___macros.html#ga7588b075b66c154a715dbfa07d4236ec">EZTR_CC_NEWLINE</a></div><div class="ttdeci">#define EZTR_CC_NEWLINE</div><div class="ttdoc">Line Break.</div><div class="ttdef"><b>Definition</b> eztr_api.h:797</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga7ce0360d53e073c4bbb551f29fae27b4"><div class="ttname"><a href="group___control___code___macros.html#ga7ce0360d53e073c4bbb551f29fae27b4">EZTR_CC_EVENT</a></div><div class="ttdeci">#define EZTR_CC_EVENT</div><div class="ttdoc">Disable Text Skip II.</div><div class="ttdef"><b>Definition</b> eztr_api.h:862</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_ga856cd8dd5a8d7cd6372e9d49683cf8ea"><div class="ttname"><a href="group___control___code___macros.html#ga856cd8dd5a8d7cd6372e9d49683cf8ea">EZTR_CC_END</a></div><div class="ttdeci">#define EZTR_CC_END</div><div class="ttdoc">Message End Marker.</div><div class="ttdef"><b>Definition</b> eztr_api.h:1034</div></div>
+<div class="ttc" id="agroup___control___code___macros_html_gaa940a0b74f0e940567852dffa2f5b6bc"><div class="ttname"><a href="group___control___code___macros.html#gaa940a0b74f0e940567852dffa2f5b6bc">EZTR_CC_SFX_ARGW</a></div><div class="ttdeci">#define EZTR_CC_SFX_ARGW</div><div class="ttdoc">Play Sound Effect xxxx.</div><div class="ttdef"><b>Definition</b> eztr_api.h:948</div></div>
+<div class="ttc" id="agroup___msg_s_content_html_gaf9672989bc812f2b03a238fe422e2f19"><div class="ttname"><a href="group___msg_s_content.html#gaf9672989bc812f2b03a238fe422e2f19">EZTR_MsgSContent_Sprintf</a></div><div class="ttdeci">int EZTR_MsgSContent_Sprintf(char *buffer, const char *format,...)</div><div class="ttdoc">A modified version of printf, specially designed to handle message content. This version uses pipe-es...</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md25"></a>
+The Independent Message Buffer</h1>
+<p>If needed, you can create your own instances of <a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> using <a class="el" href="group___msg_buffer.html#ga39c2beef126a75f0222b69759008120e">EZTR_MsgBuffer_Create</a> or one of its related functions. This enables more advanced use cases of EZTR, such as constructing messages or replacements using data from an external source.</p>
+<p>Keep in mind:</p>
+<ul>
+<li>You are responsible for destroying any message buffers you create to avoid memory leaks. Use <a class="el" href="group___msg_buffer.html#ga27b268a005666834e39511fd0dc2c469">EZTR_MsgBuffer_Destroy</a> for this.</li>
+<li><b>DO NOT try to allocate an <a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> on the stack</b>. In the context of Zelda64Recompiled, this may cause a stack overflow.</li>
+<li>If you're only doing basic string processing (and don't need to handle the header), you may not need to allocate an entire message buffer. <a class="el" href="group___msg_s_content.html">MsgSContent</a> works fine with <code>char*</code>, as long as it's <code>\xBF</code>-terminated. </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

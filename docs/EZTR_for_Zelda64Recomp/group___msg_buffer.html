@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.0.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -107,6 +107,9 @@ $(function(){initNavTree('group___msg_buffer.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">MsgBuffer</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functions for high-level message buffer operations.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -178,14 +181,21 @@ Functions</h2></td></tr>
 <tr class="memitem:gaf8d9e959cd5fa20e5bdadb8cce347c22" id="r_gaf8d9e959cd5fa20e5bdadb8cce347c22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaf8d9e959cd5fa20e5bdadb8cce347c22">EZTR_MsgBuffer_Print</a> (<a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf)</td></tr>
 <tr class="memdesc:gaf8d9e959cd5fa20e5bdadb8cce347c22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the contents of a message buffer to the console.  <br /></td></tr>
 <tr class="separator:gaf8d9e959cd5fa20e5bdadb8cce347c22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c4db9564961b914ec062cf08090159e" id="r_ga4c4db9564961b914ec062cf08090159e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga4c4db9564961b914ec062cf08090159e">EZTR_MsgBuffer_PrintCCode</a> (<a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf)</td></tr>
+<tr class="memdesc:ga4c4db9564961b914ec062cf08090159e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the contents of a message buffer to the console, formatted as a <code>EZTR_Basic_ReplaceText</code> call.  <br /></td></tr>
+<tr class="separator:ga4c4db9564961b914ec062cf08090159e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga59379a5596f63ec6c0bcd7eb4fb7fd14" id="r_ga59379a5596f63ec6c0bcd7eb4fb7fd14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga59379a5596f63ec6c0bcd7eb4fb7fd14">EZTR_MsgBuffer_PrintFull</a> (<a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf)</td></tr>
 <tr class="memdesc:ga59379a5596f63ec6c0bcd7eb4fb7fd14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the contents of a message buffer to the console.  <br /></td></tr>
 <tr class="separator:ga59379a5596f63ec6c0bcd7eb4fb7fd14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaab1cb811abf42c47b13dbc462d081e0" id="r_gaaab1cb811abf42c47b13dbc462d081e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaaab1cb811abf42c47b13dbc462d081e0">EZTR_MsgBuffer_PrintFullCCode</a> (<a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf)</td></tr>
+<tr class="memdesc:gaaab1cb811abf42c47b13dbc462d081e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the contents of a message buffer to the console, formatted as a <code>EZTR_Basic_ReplaceText</code> call.  <br /></td></tr>
+<tr class="separator:gaaab1cb811abf42c47b13dbc462d081e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga21eec47bd44a5a81b37aa88561d17146" id="r_ga21eec47bd44a5a81b37aa88561d17146"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga21eec47bd44a5a81b37aa88561d17146">EZTR_MsgBuffer_GetContentPtr</a> (<a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *buf)</td></tr>
 <tr class="memdesc:ga21eec47bd44a5a81b37aa88561d17146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a pointer to the beginning of the content region for a desired message buffer.  <br /></td></tr>
 <tr class="separator:ga21eec47bd44a5a81b37aa88561d17146"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Functions for high-level message buffer operations. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ga4370a73be9636af6f60dfb954342cedc" name="ga4370a73be9636af6f60dfb954342cedc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga4370a73be9636af6f60dfb954342cedc">&#9670;&#160;</a></span>EZTR_MsgBuffer_ContentLen()</h2>
@@ -345,7 +355,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Frees/destroys a message buffer. </p>
-<p>EZTR only expects you to destroy buffers that you create youself using one of the above functions.A_BTN_STATE_IDLE Buffers given to you by in <code>MsgCallback</code> functions are created and destroyed by EZTR.</p>
+<p>EZTR only expects you to destroy buffers that you create youself using one of the above functions. Buffers given to you by in <code>MsgCallback</code> functions are created and destroyed by EZTR.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buf</td><td>A pointer to the message buffer to destroy. </td></tr>
@@ -635,6 +645,32 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ga4c4db9564961b914ec062cf08090159e" name="ga4c4db9564961b914ec062cf08090159e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4c4db9564961b914ec062cf08090159e">&#9670;&#160;</a></span>EZTR_MsgBuffer_PrintCCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EZTR_MsgBuffer_PrintCCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the contents of a message buffer to the console, formatted as a <code>EZTR_Basic_ReplaceText</code> call. </p>
+<p>The string literal for the content will end with the '\xBF' termination character.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>The message buffer to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ga59379a5596f63ec6c0bcd7eb4fb7fd14" name="ga59379a5596f63ec6c0bcd7eb4fb7fd14"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga59379a5596f63ec6c0bcd7eb4fb7fd14">&#9670;&#160;</a></span>EZTR_MsgBuffer_PrintFull()</h2>
 
@@ -652,6 +688,32 @@ Functions</h2></td></tr>
 
 <p>Prints the contents of a message buffer to the console. </p>
 <p>Each value in the header will be labeled. The this function prints the entire 1279 bytes of the content region.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buf</td><td>The message buffer to print. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="gaaab1cb811abf42c47b13dbc462d081e0" name="gaaab1cb811abf42c47b13dbc462d081e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaab1cb811abf42c47b13dbc462d081e0">&#9670;&#160;</a></span>EZTR_MsgBuffer_PrintFullCCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EZTR_MsgBuffer_PrintFullCCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="union_e_z_t_r___msg_buffer.html">EZTR_MsgBuffer</a> *</td>          <td class="paramname"><span class="paramname"><em>buf</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints the contents of a message buffer to the console, formatted as a <code>EZTR_Basic_ReplaceText</code> call. </p>
+<p>The this function prints the entire 1279 bytes of the content region.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">buf</td><td>The message buffer to print. </td></tr>
