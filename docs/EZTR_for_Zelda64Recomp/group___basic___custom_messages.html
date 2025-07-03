@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.2.0</span>
+   <div id="projectname">EZ Text Replacer for Zelda64Recompiled<span id="projectnumber">&#160;2.3.0</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -318,6 +318,7 @@ Functions</h2></td></tr>
 
 <p>Declare a replacement for a custom message by copying from a buffer defined by the user. </p>
 <p>If you've defined a message using the MsgBuffer/MsgSContent functions, you can use this to set it (or, rather, a copy of it) as the new message.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated</a></b></dt><dd>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomBuffer</code> for compatability.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>The handle for the message being replaced. </td></tr>
@@ -396,6 +397,7 @@ Functions</h2></td></tr>
 <p>Declare a replacement of a custom message by defining the header attributes and message content. </p>
 <p>This is probably the easiest method to replace custom messages, even those defined by other mods.</p>
 <p>The <code>content</code> argument uses EZTR's printf formatting arguments, specified after <code>callback</code>. See <a class="el" href="prinf_functions.html">EZTR Printf Functions</a> for more information on EZTR's custom printf behavior.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated</a></b></dt><dd>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomText</code> for compatability.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>The handle for the message being replaced. </td></tr>
@@ -436,6 +438,7 @@ Functions</h2></td></tr>
 
 <p>Declare a replacement of a custom message, where the replacement message is empty. </p>
 <p>This is primarily used if you want the message to be completely dynamically generated.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated</a></b></dt><dd>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomTextEmpty</code> for compatability.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">handle</td><td>The handle for the message being replaced. </td></tr>

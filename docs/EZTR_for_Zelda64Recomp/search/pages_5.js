@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['handles_0',['Custom Messages and Handles',['../custom_messages_and_handles.html',1,'']]]
+  ['for_20zelda64recompiled_0',['EZ Text Replacer for Zelda64Recompiled',['../index.html',1,'']]],
+  ['functions_1',['EZTR Printf Functions',['../prinf_functions.html',1,'']]]
 ];

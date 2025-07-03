@@ -68,6 +68,7 @@ var NAVTREE =
       [ "The Message Buffer and Callbacks", "the_message_buffer.html#message_buffer_and_callbacks", null ],
       [ "The Independent Message Buffer", "the_message_buffer.html#autotoc_md25", null ]
     ] ],
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -89,7 +90,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"union_e_z_t_r___msg_buffer___raw.html"
+"union_e_z_t_r___msg_buffer.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

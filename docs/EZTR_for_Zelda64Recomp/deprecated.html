@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.13.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>EZ Text Replacer for Zelda64Recompiled: Globals</title>
+<title>EZ Text Replacer for Zelda64Recompiled: Deprecated List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,7 +76,7 @@ $(function() { codefold.init(0); });
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('globals_type.html',''); initResizable(true); });
+$(function(){initNavTree('deprecated.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,12 +101,20 @@ $(function(){initNavTree('globals_type.html',''); initResizable(true); });
 </div>
 </div>
 
+<div><div class="header">
+  <div class="headertitle"><div class="title">Deprecated List</div></div>
+</div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all documented typedefs with links to the documentation:</div><ul>
-<li>EZTR_CustomMsgHandle&#160;:&#160;<a class="el" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f">eztr_api.h</a></li>
-<li>EZTR_MsgCallback&#160;:&#160;<a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5">eztr_api.h</a></li>
-</ul>
-</div><!-- contents -->
+<div class="textblock"><dl class="reflist">
+<dt>Global <a class="el" href="group___basic___custom_messages.html#ga52a12f735129bbe48bc0780c47fa7665">EZTR_Basic_ReplaceCustomBuffer</a>  (<a class="el" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f" title="The type declaration for custom message handle.">EZTR_CustomMsgHandle</a> handle, <a class="el" href="union_e_z_t_r___msg_buffer.html" title="A union of the three MsgBuffer structs, and the primary type for interacting with message data.">EZTR_MsgBuffer</a> *buf, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5" title="The function pointer type for message callbacks.">EZTR_MsgCallback</a> callback)</dt>
+<dd><a class="anchor" id="_deprecated000001"></a>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomBuffer</code> for compatability. </dd>
+<dt>Global <a class="el" href="group___basic___custom_messages.html#ga11e9f0dbf36eb25a91493c51aac6cd64">EZTR_Basic_ReplaceCustomText</a>  (<a class="el" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f" title="The type declaration for custom message handle.">EZTR_CustomMsgHandle</a> handle, u8 text_box_type, u8 text_box_y_pos, u8 display_icon, u16 next_message_id, u16 first_item_rupees, u16 second_item_rupees, bool pipe_escape_bytes, char *content, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5" title="The function pointer type for message callbacks.">EZTR_MsgCallback</a> callback,...)</dt>
+<dd><a class="anchor" id="_deprecated000002"></a>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomText</code> for compatability. </dd>
+<dt>Global <a class="el" href="group___basic___custom_messages.html#gac21eaf9a0b5b451ff82363418ce9eb10">EZTR_Basic_ReplaceCustomTextEmpty</a>  (<a class="el" href="group___types.html#gaf14c939010aeb8ff548788278b5e1b0f" title="The type declaration for custom message handle.">EZTR_CustomMsgHandle</a> handle, <a class="el" href="group___types.html#gad9ba35ad8684a0265d641043caa81bc5" title="The function pointer type for message callbacks.">EZTR_MsgCallback</a> callback)</dt>
+<dd><a class="anchor" id="_deprecated000003"></a>since 2.3.0. The new handling of message replacement order makes this unnecessary. As of this version, this function just wraps <code>EZTR_Basic_AddCustomTextEmpty</code> for compatability.</dd>
+</dl>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
